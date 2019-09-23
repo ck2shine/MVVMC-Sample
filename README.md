@@ -1,3 +1,2 @@
-# MVVMPractice
+# MVVMC-Sample
 
-Sample of MVVM
