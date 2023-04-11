@@ -17,6 +17,9 @@
 		A4DAE4D129E3F65A00CB97CB /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D029E3F65A00CB97CB /* BookListViewModel.swift */; };
 		A4DAE4D529E3F79400CB97CB /* BookItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D429E3F79400CB97CB /* BookItemEntity.swift */; };
 		A4DAE4D729E3F7C800CB97CB /* BookListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D629E3F7C800CB97CB /* BookListUseCase.swift */; };
+		A4DAE4DA29E52B9A00CB97CB /* BookImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D929E52B9A00CB97CB /* BookImageCellViewModel.swift */; };
+		A4DAE4DC29E52BBB00CB97CB /* BookCellSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4DB29E52BBB00CB97CB /* BookCellSetting.swift */; };
+		A4DAE4E029E52D1900CB97CB /* BookImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4DF29E52D1900CB97CB /* BookImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		A4DAE4D029E3F65A00CB97CB /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		A4DAE4D429E3F79400CB97CB /* BookItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemEntity.swift; sourceTree = "<group>"; };
 		A4DAE4D629E3F7C800CB97CB /* BookListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListUseCase.swift; sourceTree = "<group>"; };
+		A4DAE4D929E52B9A00CB97CB /* BookImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageCellViewModel.swift; sourceTree = "<group>"; };
+		A4DAE4DB29E52BBB00CB97CB /* BookCellSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellSetting.swift; sourceTree = "<group>"; };
+		A4DAE4DF29E52D1900CB97CB /* BookImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 		A46ADA7F29E3D4E5009ED465 /* BookList */ = {
 			isa = PBXGroup;
 			children = (
+				A4DAE4D829E52B5700CB97CB /* Cells */,
 				A46ADA8129E3D51D009ED465 /* BookListViewController.swift */,
 				A4DAE4D029E3F65A00CB97CB /* BookListViewModel.swift */,
 			);
@@ -218,6 +225,16 @@
 				A4DAE4D629E3F7C800CB97CB /* BookListUseCase.swift */,
 			);
 			path = BookList;
+			sourceTree = "<group>";
+		};
+		A4DAE4D829E52B5700CB97CB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A4DAE4D929E52B9A00CB97CB /* BookImageCellViewModel.swift */,
+				A4DAE4DB29E52BBB00CB97CB /* BookCellSetting.swift */,
+				A4DAE4DF29E52D1900CB97CB /* BookImageCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +349,9 @@
 			files = (
 				A4DAE4D729E3F7C800CB97CB /* BookListUseCase.swift in Sources */,
 				A46ADA8229E3D51D009ED465 /* BookListViewController.swift in Sources */,
+				A4DAE4DC29E52BBB00CB97CB /* BookCellSetting.swift in Sources */,
+				A4DAE4DA29E52B9A00CB97CB /* BookImageCellViewModel.swift in Sources */,
+				A4DAE4E029E52D1900CB97CB /* BookImageCell.swift in Sources */,
 				A49A065B299C952300688FEE /* AppDelegate.swift in Sources */,
 				A4DAE4D529E3F79400CB97CB /* BookItemEntity.swift in Sources */,
 				A4DAE4D129E3F65A00CB97CB /* BookListViewModel.swift in Sources */,

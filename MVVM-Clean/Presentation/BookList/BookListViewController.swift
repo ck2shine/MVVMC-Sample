@@ -27,15 +27,14 @@ public class BookListViewController: UIViewController {
         lable.textAlignment = .center
         lable.textColor = .black
         lable.text = "This is book title"
-        lable.layer.borderWidth = 1
-        lable.layer.borderColor = UIColor.black.cgColor
         return lable
     }()
     
     public lazy var searchButton: UIButton = {
         let button = UIButton()
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 5
+        button.layer.borderColor = UIColor.systemGray.cgColor
         button.setTitle("Search", for: .normal)
         button.setTitleColor(.black, for: .normal)
         return button
@@ -67,18 +66,29 @@ public extension BookListViewController {
       
         searchButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-            $0.width.equalTo(200)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
+            $0.width.equalTo(130)
             $0.height.equalTo(50)
         }
         
         view.addSubview(bookTitleLabel)
         bookTitleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.height.equalTo(50)
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            $0.height.equalTo(searchButton.snp.height)
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
             $0.trailing.equalTo(searchButton.snp.leading).offset(-10)
         }
+        
+        view.addSubview(bookListTableView)
+        bookListTableView.snp.makeConstraints {
+            $0.top.equalTo(searchButton.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.trailing.equalToSuperview().offset(-10)
+        }
+        
+        bookListTableView.delegate = self
+        bookListTableView.dataSource = self
     }
     
     func initializeBinding() {
@@ -89,4 +99,24 @@ public extension BookListViewController {
             }
             .store(in: &subscriptions)
     }
+}
+
+extension BookListViewController: UITableViewDataSource{
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        cell.textLabel!.text = "Title text"
+          cell.imageView!.image = UIImage(named: "bunny")
+          return cell
+    }
+    
+    
+}
+
+extension BookListViewController: UITableViewDelegate{
+    
 }
