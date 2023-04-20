@@ -10,10 +10,23 @@
  */
 
 import Foundation
+import Combine
 public protocol BookListUseCase{
     
+    func fetchBookItems() -> AnyPublisher<[BookListEntity],Error>
 }
 
 public class BookListDefaultUseCase: BookListUseCase{
+ 
+    private let repository: BookListRepository
+    
+    public init(repository: BookListRepository = BookListDefaultRepository()){
+        self.repository = repository
+    }
+    
+    public func fetchBookItems() -> AnyPublisher<[BookListEntity], Error> {
+        return self.repository.retrieveBookItems()
+    }
+    
     
 }

@@ -10,3 +10,7 @@
  */
 
 import Foundation
+//MARK: for business logic
+public struct BookListModel{
+    
+}

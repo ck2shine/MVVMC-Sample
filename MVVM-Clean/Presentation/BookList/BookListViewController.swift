@@ -35,7 +35,7 @@ public class BookListViewController: UIViewController {
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 5
         button.layer.borderColor = UIColor.systemGray.cgColor
-        button.setTitle("Search", for: .normal)
+        button.setTitle("Refresh", for: .normal)
         button.setTitleColor(.black, for: .normal)
         return button
     }()
@@ -60,7 +60,7 @@ public class BookListViewController: UIViewController {
 }
 
 public extension BookListViewController {
-    func setupUI() {
+    private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(searchButton)
       
@@ -91,11 +91,20 @@ public extension BookListViewController {
         bookListTableView.dataSource = self
     }
     
-    func initializeBinding() {
+    private func initializeBinding() {
+        //input
+        searchButton
+            .publisher(for: .touchUpInside)
+            .sink { [unowned self] in
+                self.viewModel.input.refreshButtonClick.send(())
+            }
+            .store(in: &subscriptions)
+        
+        //output
         let output = viewModel.output
         output.bookTitleText
-            .sink { [weak self] titleName in
-                self?.bookTitleLabel.text = titleName
+            .sink {  [unowned self]  titleName in
+                self.bookTitleLabel.text = titleName
             }
             .store(in: &subscriptions)
     }
@@ -103,10 +112,12 @@ public extension BookListViewController {
 
 extension BookListViewController: UITableViewDataSource{
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.viewModel._bookItems.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel!.text = "Title text"
@@ -118,5 +129,7 @@ extension BookListViewController: UITableViewDataSource{
 }
 
 extension BookListViewController: UITableViewDelegate{
-    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }

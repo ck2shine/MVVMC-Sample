@@ -9,23 +9,25 @@
  * or redistributed directly or indirectly in any medium.
  */
 
-import Foundation
 import Combine
+import Foundation
 
 public protocol BookListViewModelInput {
  
-    var initialDataTrigger: PassthroughSubject<(),Never>{get}
- 
+    var refreshButtonClick: PassthroughSubject<Void, Never> { get }
+        
     func updateBookTitleContent()
-    
-   
 }
+
 // Output
 public protocol BookListViewModelOutput {
+    var bookTitleText: CurrentValueSubject<String, Never> { get }
     
-    var bookTitleText: CurrentValueSubject<String,Never>{get}
-
+    var _bookItems: [BookItemViewModelProtocol]{ get }
+    
+//    var loadItem: CurrentValueSubject<[BookItemViewModelProtocol], Never> { get }
 }
+
 // Manager
 public protocol BookListViewModelManager {
     // Input
@@ -34,42 +36,49 @@ public protocol BookListViewModelManager {
     var output: BookListViewModelOutput { get }
 }
 
-public class BookListViewModel:BookListViewModelManager , BookListViewModelInput, BookListViewModelOutput{
-    //input
-    public var initialDataTrigger: PassthroughSubject<(), Never> = PassthroughSubject()
+public class BookListViewModel: BookListViewModelManager, BookListViewModelInput, BookListViewModelOutput {
+    // input
+    public var refreshButtonClick: PassthroughSubject<Void, Never> = .init()
    
-    //output
+    // output
+    @Published public var _bookItems: [BookItemViewModelProtocol] = []
     public var bookTitleText: CurrentValueSubject<String, Never> = CurrentValueSubject("default bookName")
-    
-    
-    public var input: BookListViewModelInput{
+
+    let buttonTapped = PassthroughSubject<Void, Never>()
+    public var input: BookListViewModelInput {
         return self
     }
     
-    public var output: BookListViewModelOutput{
+    public var output: BookListViewModelOutput {
         return self
     }
     
+    private var subscription = Set<AnyCancellable>()
     private var useCase: BookListUseCase
     
-    public init(useCase: BookListUseCase){
+    public init(useCase: BookListUseCase) {
         self.useCase = useCase
         initializeAction()
     }
-    
-    //MARK: initializeActions
-    private func initializeAction(){
-        
+
+    // MARK: initializeActions
+
+    private func initializeAction() {
+        refreshButtonClick
+            .setFailureType(to: Error.self)
+            .flatMap { _ in
+                self.useCase.fetchBookItems()
+            }.sink { error in
+                print("error \(error)")
+            } receiveValue: { bookItem in
+//             
+            }
+            .store(in: &subscription)
     }
 }
 
-//input actions
-extension BookListViewModel{
-    
-    //MARL: update book title
-    public final func updateBookTitleContent() {
-        
-    }
+// input actions
+public extension BookListViewModel {
+    // MARL: update book title
+    final func updateBookTitleContent() {}
 }
-
-
