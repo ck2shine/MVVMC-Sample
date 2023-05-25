@@ -19,7 +19,7 @@ public struct BookListDTO: Decodable{
 
 extension BookListDTO {
     public func toDomain() -> BookListEntity {
-        return BookListEntity(items: items.forEach{$0.toDomain()})
+        return BookListEntity(items: items.map{$0.toDomain()})
     }
 }
 

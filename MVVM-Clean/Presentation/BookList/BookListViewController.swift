@@ -57,6 +57,12 @@ public class BookListViewController: UIViewController {
         setupUI()
         initializeBinding()
     }
+    
+    override public func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // trigger refresh table content
+        viewModel.input.refreshTableContent.send(())
+    }
 }
 
 public extension BookListViewController {
@@ -89,47 +95,66 @@ public extension BookListViewController {
         
         bookListTableView.delegate = self
         bookListTableView.dataSource = self
+        bookListTableView.register(BookImageCell.self, forCellReuseIdentifier: BookImageCell.identifier)
+        
+        
     }
     
     private func initializeBinding() {
-        //input
+        // input
         searchButton
             .publisher(for: .touchUpInside)
             .sink { [unowned self] in
-                self.viewModel.input.refreshButtonClick.send(())
+                self.viewModel.input.refreshTableContent.send(())
             }
             .store(in: &subscriptions)
         
-        //output
+        // output
         let output = viewModel.output
+        
+        // label binding
         output.bookTitleText
-            .sink {  [unowned self]  titleName in
+            .sink { [unowned self] titleName in
                 self.bookTitleLabel.text = titleName
+            }
+            .store(in: &subscriptions)
+        
+        // tableview binding
+        output.bookItemsPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] _ in
+                self.bookListTableView.reloadData()
             }
             .store(in: &subscriptions)
     }
 }
 
-extension BookListViewController: UITableViewDataSource{
+extension BookListViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel._bookItems.count
+        return viewModel._bookItems.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: BookImageCell.identifier, for: indexPath)
         
+        let cellViewModel = viewModel._bookItems[indexPath.row]
+        if let bookImageCell = cell as? BookCellSettingProtocol{
+            bookImageCell.setupCell(cellViewModel)
+        }
         
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        cell.textLabel!.text = "Title text"
-          cell.imageView!.image = UIImage(named: "bunny")
-          return cell
+        cell.selectionStyle = .none
+        
+        return cell
     }
-    
-    
 }
 
-extension BookListViewController: UITableViewDelegate{
+extension BookListViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }

@@ -12,20 +12,18 @@
 import Combine
 import Foundation
 
+// Input
 public protocol BookListViewModelInput {
- 
-    var refreshButtonClick: PassthroughSubject<Void, Never> { get }
-        
+    var refreshTableContent: PassthroughSubject<Void, Never> { get }
+
     func updateBookTitleContent()
 }
 
 // Output
 public protocol BookListViewModelOutput {
     var bookTitleText: CurrentValueSubject<String, Never> { get }
-    
-    var _bookItems: [BookItemViewModelProtocol]{ get }
-    
-//    var loadItem: CurrentValueSubject<[BookItemViewModelProtocol], Never> { get }
+    var _bookItems: [BookItemViewModelProtocol] { get }
+    var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> { get }
 }
 
 // Manager
@@ -37,25 +35,31 @@ public protocol BookListViewModelManager {
 }
 
 public class BookListViewModel: BookListViewModelManager, BookListViewModelInput, BookListViewModelOutput {
-    // input
-    public var refreshButtonClick: PassthroughSubject<Void, Never> = .init()
-   
-    // output
+    // private variables
     @Published public var _bookItems: [BookItemViewModelProtocol] = []
+
+    // input
+    public var refreshTableContent: PassthroughSubject<Void, Never> = .init()
+
+    // output
+    public var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> {
+        return $_bookItems.eraseToAnyPublisher()
+    }
+
     public var bookTitleText: CurrentValueSubject<String, Never> = CurrentValueSubject("default bookName")
 
     let buttonTapped = PassthroughSubject<Void, Never>()
     public var input: BookListViewModelInput {
         return self
     }
-    
+
     public var output: BookListViewModelOutput {
         return self
     }
-    
+
     private var subscription = Set<AnyCancellable>()
     private var useCase: BookListUseCase
-    
+
     public init(useCase: BookListUseCase) {
         self.useCase = useCase
         initializeAction()
@@ -64,14 +68,16 @@ public class BookListViewModel: BookListViewModelManager, BookListViewModelInput
     // MARK: initializeActions
 
     private func initializeAction() {
-        refreshButtonClick
+        refreshTableContent
             .setFailureType(to: Error.self)
             .flatMap { _ in
                 self.useCase.fetchBookItems()
             }.sink { error in
                 print("error \(error)")
-            } receiveValue: { bookItem in
-//             
+            } receiveValue: { bookItems in
+                let model = BookListModel()
+                let items = model.convertDataToModels(entity: bookItems)
+                self._bookItems = items
             }
             .store(in: &subscription)
     }

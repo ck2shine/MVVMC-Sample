@@ -12,35 +12,42 @@
 import Foundation
 import Combine
 public final class BookListDefaultRepository: BookListRepository{
-  
-    
+   
     public init(){}
     
-    public func retrieveBookItems() -> AnyPublisher<[BookListEntity], Error> {
+    public func retrieveBookItems() -> AnyPublisher<BookListEntity, Error> {
         
         Future{ promise in
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
                 
 //                promise(.failure(APIError.networkError("Customer error")))
                 
-                let entity = BookListEntity(bookName: "Life is easy")
-                    promise(.success([entity]))
+                let entity1 = BookItemEntity(bookName: "1st Book", bookImageName: "pencil", bookDescription: "My first Book")
+                let entity2 = BookItemEntity(bookName: "2nd Book", bookImageName: "eraser", bookDescription: "My second Book")
+                let entity3 = BookItemEntity(bookName: "3rd Book", bookImageName: "sun.dust.fill", bookDescription: "My Third Book")
+                
+                let list = BookListEntity(items: [entity1,entity2,entity3])
+                
+    
+                    promise(.success(list))
             }
             
         }
         .eraseToAnyPublisher()
     }
     
-    public func retrieveBookFromCache() -> AnyPublisher<[BookListEntity], Error> {
+    public func retrieveBookFromCache() -> AnyPublisher<BookListEntity, Error> {
         Future{ promise in
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 
 //                promise(.failure(APIError.networkError("Customer error")))
                 
-                let entity = BookListEntity(bookName: "Life is easy")
-                    promise(.success([entity]))
+                let entity = BookItemEntity(bookName: "1st Book", bookImageName: "book1", bookDescription: "My first Book")
+                
+                let list = BookListEntity(items: [entity])
+                    promise(.success(list))
             }
             
         }

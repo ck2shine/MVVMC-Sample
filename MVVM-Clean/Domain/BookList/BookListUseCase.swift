@@ -13,7 +13,7 @@ import Foundation
 import Combine
 public protocol BookListUseCase{
     
-    func fetchBookItems() -> AnyPublisher<[BookListEntity],Error>
+    func fetchBookItems() -> AnyPublisher<BookListEntity,Error>
 }
 
 public class BookListDefaultUseCase: BookListUseCase{
@@ -24,7 +24,7 @@ public class BookListDefaultUseCase: BookListUseCase{
         self.repository = repository
     }
     
-    public func fetchBookItems() -> AnyPublisher<[BookListEntity], Error> {
+    public func fetchBookItems() -> AnyPublisher<BookListEntity, Error> {
         return self.repository.retrieveBookItems()
     }
     

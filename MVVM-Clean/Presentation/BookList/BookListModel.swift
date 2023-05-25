@@ -12,5 +12,10 @@
 import Foundation
 //MARK: for business logic
 public struct BookListModel{
-    
+    public func convertDataToModels(entity: BookListEntity) -> [BookImageCellViewModel]{
+        let viewModels = entity.items.map{
+            BookImageCellViewModel(mainTitle: $0.bookName, subTitle: $0.bookDescription, imageName: $0.bookImageName)
+        }
+        return viewModels
+    }
 }

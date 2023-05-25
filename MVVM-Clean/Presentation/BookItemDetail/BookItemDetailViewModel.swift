@@ -10,8 +10,6 @@
  */
 
 import Foundation
-import Combine
-public protocol BookListRepository{
-    func retrieveBookItems() -> AnyPublisher<BookListEntity , Error>
-    func retrieveBookFromCache() -> AnyPublisher<BookListEntity , Error>
+public final class BookItemDetailViewModel{
+    
 }
