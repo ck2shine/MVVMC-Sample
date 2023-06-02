@@ -12,6 +12,8 @@
 import Foundation
 import Combine
 public class BookImageCellViewModel: BookItemViewModelProtocol{
+    public var cellHeight: CGFloat = 100
+    
 
     public var mainTitle: CurrentValueSubject<String,Never>
     public var subTitle: CurrentValueSubject<String,Never>

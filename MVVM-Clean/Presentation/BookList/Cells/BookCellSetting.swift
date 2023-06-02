@@ -18,5 +18,5 @@ public protocol BookCellSettingProtocol{
 }
 
 public protocol BookItemViewModelProtocol{
-    
+    var cellHeight: CGFloat{get set}
 }

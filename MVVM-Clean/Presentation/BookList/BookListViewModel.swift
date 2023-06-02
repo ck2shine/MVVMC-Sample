@@ -22,8 +22,10 @@ public protocol BookListViewModelInput {
 // Output
 public protocol BookListViewModelOutput {
     var bookTitleText: CurrentValueSubject<String, Never> { get }
-    var _bookItems: [BookItemViewModelProtocol] { get }
+
     var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> { get }
+
+    var activityItemPublisher: AnyPublisher<Bool, Never> { get }
 }
 
 // Manager
@@ -35,11 +37,17 @@ public protocol BookListViewModelManager {
 }
 
 public class BookListViewModel: BookListViewModelManager, BookListViewModelInput, BookListViewModelOutput {
+    @Published private var _activityItem: Bool = false
+    public var activityItemPublisher: AnyPublisher<Bool, Never> {
+        return $_activityItem.eraseToAnyPublisher()
+    }
+
     // private variables
     @Published public var _bookItems: [BookItemViewModelProtocol] = []
 
     // input
     public var refreshTableContent: PassthroughSubject<Void, Never> = .init()
+    public var startLoadingActivity: PassthroughSubject<Bool, Never> = .init()
 
     // output
     public var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> {
@@ -68,18 +76,22 @@ public class BookListViewModel: BookListViewModelManager, BookListViewModelInput
     // MARK: initializeActions
 
     private func initializeAction() {
+        // binding tableview event
         refreshTableContent
             .setFailureType(to: Error.self)
-            .flatMap { _ in
-                self.useCase.fetchBookItems()
+            .flatMap {[unowned self] _ in
+                self._activityItem = true
+                return self.useCase.fetchBookItems()
             }.sink { error in
                 print("error \(error)")
-            } receiveValue: { bookItems in
+            } receiveValue: { [unowned self] bookItems in
                 let model = BookListModel()
                 let items = model.convertDataToModels(entity: bookItems)
                 self._bookItems = items
+                self._activityItem = false
             }
             .store(in: &subscription)
+
     }
 }
 

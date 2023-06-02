@@ -12,7 +12,7 @@
 import UIKit
 import Combine
 public class BookImageCell: UITableViewCell , BookCellSettingProtocol{
-    
+
     private var subscription = Set<AnyCancellable>()
     
     public var nibID: String = "BookImageCell"

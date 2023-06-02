@@ -15,13 +15,18 @@ import UIKit
 public class BookListViewController: UIViewController {
     private var subscriptions = Set<AnyCancellable>()
     
-    public lazy var bookListTableView: UITableView = {
+    private lazy var loadingActiviy: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        return activity
+    }()
+    
+    private lazy var bookListTableView: UITableView = {
         let tableView = UITableView()
         
         return tableView
     }()
     
-    public lazy var bookTitleLabel: UILabel = {
+    private lazy var bookTitleLabel: UILabel = {
         let lable = UILabel()
         lable.font = UIFont.boldSystemFont(ofSize: 20)
         lable.textAlignment = .center
@@ -30,7 +35,7 @@ public class BookListViewController: UIViewController {
         return lable
     }()
     
-    public lazy var searchButton: UIButton = {
+    private lazy var searchButton: UIButton = {
         let button = UIButton()
         button.layer.borderWidth = 2
         button.layer.cornerRadius = 5
@@ -98,6 +103,12 @@ public extension BookListViewController {
         bookListTableView.register(BookImageCell.self, forCellReuseIdentifier: BookImageCell.identifier)
         
         
+        view.addSubview(loadingActiviy)
+        loadingActiviy.snp.makeConstraints{
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
     }
     
     private func initializeBinding() {
@@ -126,6 +137,16 @@ public extension BookListViewController {
                 self.bookListTableView.reloadData()
             }
             .store(in: &subscriptions)
+        
+        output.activityItemPublisher
+            .sink { [unowned self] in
+                if $0 {
+                    self.loadingActiviy.startAnimating()
+                }else{
+                    self.loadingActiviy.stopAnimating()
+                }
+            }
+            .store(in: &subscriptions)
     }
 }
 
@@ -151,7 +172,8 @@ extension BookListViewController: UITableViewDataSource {
 
 extension BookListViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        let cellHeight = self.viewModel._bookItems[indexPath.row].cellHeight
+        return cellHeight
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
