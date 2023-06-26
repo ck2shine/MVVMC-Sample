@@ -20,7 +20,7 @@ public class BookListDefaultUseCase: BookListUseCase{
  
     private let repository: BookListRepository
     
-    public init(repository: BookListRepository = BookListDefaultRepository()){
+    public init(repository: BookListRepository){
         self.repository = repository
     }
     

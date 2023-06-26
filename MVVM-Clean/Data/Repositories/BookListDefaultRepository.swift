@@ -11,15 +11,28 @@
 
 import Foundation
 import Combine
+import NetworkInfra
 public final class BookListDefaultRepository: BookListRepository{
-   
-    public init(){}
+    
+    private let bookListServiceLoader: DataServiceLoader
+    
+    public init(bookListServiceLoader: DataServiceLoader) {
+        self.bookListServiceLoader = bookListServiceLoader
+    }
     
     public func retrieveBookItems() -> AnyPublisher<BookListEntity, Error> {
         
         Future{ promise in
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+            
+                var param = [String:String]()
+                param["name"] = "John"
+                let endPoint = NetworkEndpoint<BookListDTO>(APIParameters: param, method: .post)
+                
+                self.bookListServiceLoader.load(with: endPoint) { result in
+                    
+                }
                 
 //                promise(.failure(APIError.networkError("Customer error")))
                 

@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A461A7D62A3C2C0D00F50DB0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A461A7D52A3C2C0D00F50DB0 /* AppCoordinator.swift */; };
+		A461A7D82A3C2D0500F50DB0 /* BookListFlowDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A461A7D72A3C2D0500F50DB0 /* BookListFlowDIContainer.swift */; };
+		A461A7DB2A3C303500F50DB0 /* GeneralServiceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A461A7DA2A3C303500F50DB0 /* GeneralServiceLoader.swift */; };
+		A461A7E32A3C339400F50DB0 /* EnvironmentSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A461A7E22A3C339400F50DB0 /* EnvironmentSetting.swift */; };
 		A46ADA8229E3D51D009ED465 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46ADA8129E3D51D009ED465 /* BookListViewController.swift */; };
 		A46ADA8529E3D7F4009ED465 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A46ADA8429E3D7F4009ED465 /* SnapKit-Dynamic */; };
 		A46C4BE729E7A3DC0032A411 /* BookListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C4BE629E7A3DC0032A411 /* BookListModel.swift */; };
 		A49A065B299C952300688FEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49A065A299C952300688FEE /* AppDelegate.swift */; };
 		A49A0664299C952400688FEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A49A0663299C952400688FEE /* Assets.xcassets */; };
 		A4D0B92929E939C900FB544C /* UIControl+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0B92829E939C900FB544C /* UIControl+Extension.swift */; };
-		A4D0B93329E93B8F00FB544C /* NetworkInfra in Resources */ = {isa = PBXBuildFile; fileRef = A4D0B93129E93B8F00FB544C /* NetworkInfra */; };
-		A4D0B93429E93B8F00FB544C /* DataStorageInfra in Resources */ = {isa = PBXBuildFile; fileRef = A4D0B93229E93B8F00FB544C /* DataStorageInfra */; };
 		A4D0B93829E93CAE00FB544C /* BookListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0B93729E93CAE00FB544C /* BookListRepository.swift */; };
 		A4D0B93A29E941F100FB544C /* BookListDefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0B93929E941F100FB544C /* BookListDefaultRepository.swift */; };
 		A4D3C3432A1DF1ED00352AD1 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D3C3422A1DF1ED00352AD1 /* UITableViewCell+Extension.swift */; };
@@ -29,6 +31,8 @@
 		A4DAE4DA29E52B9A00CB97CB /* BookImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D929E52B9A00CB97CB /* BookImageCellViewModel.swift */; };
 		A4DAE4DC29E52BBB00CB97CB /* BookCellSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4DB29E52BBB00CB97CB /* BookCellSetting.swift */; };
 		A4DAE4E029E52D1900CB97CB /* BookImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4DF29E52D1900CB97CB /* BookImageCell.swift */; };
+		A4E8A6D92A495393000F8F12 /* DataStorageInfra in Frameworks */ = {isa = PBXBuildFile; productRef = A4E8A6D82A495393000F8F12 /* DataStorageInfra */; };
+		A4E8A6DB2A495396000F8F12 /* NetworkInfra in Frameworks */ = {isa = PBXBuildFile; productRef = A4E8A6DA2A495396000F8F12 /* NetworkInfra */; };
 		A4EEAC7E29F1183B00280EEA /* BookListDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EEAC7D29F1183B00280EEA /* BookListDTO+Mapping.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A461A7D52A3C2C0D00F50DB0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		A461A7D72A3C2D0500F50DB0 /* BookListFlowDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListFlowDIContainer.swift; sourceTree = "<group>"; };
+		A461A7DA2A3C303500F50DB0 /* GeneralServiceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralServiceLoader.swift; sourceTree = "<group>"; };
+		A461A7E22A3C339400F50DB0 /* EnvironmentSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSetting.swift; sourceTree = "<group>"; };
 		A46ADA8129E3D51D009ED465 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		A46C4BE629E7A3DC0032A411 /* BookListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListModel.swift; sourceTree = "<group>"; };
 		A49A0657299C952300688FEE /* MVVM-Clean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-Clean.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,8 +72,6 @@
 		A49A0663299C952400688FEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A49A0668299C952400688FEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4D0B92829E939C900FB544C /* UIControl+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Extension.swift"; sourceTree = "<group>"; };
-		A4D0B93129E93B8F00FB544C /* NetworkInfra */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = NetworkInfra; sourceTree = "<group>"; };
-		A4D0B93229E93B8F00FB544C /* DataStorageInfra */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataStorageInfra; sourceTree = "<group>"; };
 		A4D0B93729E93CAE00FB544C /* BookListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListRepository.swift; sourceTree = "<group>"; };
 		A4D0B93929E941F100FB544C /* BookListDefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListDefaultRepository.swift; sourceTree = "<group>"; };
 		A4D3C3422A1DF1ED00352AD1 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
@@ -79,6 +85,8 @@
 		A4DAE4D929E52B9A00CB97CB /* BookImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageCellViewModel.swift; sourceTree = "<group>"; };
 		A4DAE4DB29E52BBB00CB97CB /* BookCellSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCellSetting.swift; sourceTree = "<group>"; };
 		A4DAE4DF29E52D1900CB97CB /* BookImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageCell.swift; sourceTree = "<group>"; };
+		A4E8A6D62A49538F000F8F12 /* DataStorageInfra */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DataStorageInfra; path = Packages/DataStorageInfra; sourceTree = "<group>"; };
+		A4E8A6D72A49538F000F8F12 /* NetworkInfra */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = NetworkInfra; path = Packages/NetworkInfra; sourceTree = "<group>"; };
 		A4EEAC7D29F1183B00280EEA /* BookListDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookListDTO+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,6 +96,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A46ADA8529E3D7F4009ED465 /* SnapKit-Dynamic in Frameworks */,
+				A4E8A6D92A495393000F8F12 /* DataStorageInfra in Frameworks */,
+				A4E8A6DB2A495396000F8F12 /* NetworkInfra in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,9 +112,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A461A7D42A3C2B7600F50DB0 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				A461A7D72A3C2D0500F50DB0 /* BookListFlowDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		A461A7D92A3C301F00F50DB0 /* ServiceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				A461A7DA2A3C303500F50DB0 /* GeneralServiceLoader.swift */,
+			);
+			path = ServiceLoader;
+			sourceTree = "<group>";
+		};
 		A46ADA7829E3D11C009ED465 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A461A7D92A3C301F00F50DB0 /* ServiceLoader */,
+				A461A7D42A3C2B7600F50DB0 /* DIContainer */,
+				A461A7D52A3C2C0D00F50DB0 /* AppCoordinator.swift */,
+				A461A7E22A3C339400F50DB0 /* EnvironmentSetting.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -147,8 +177,6 @@
 		A46ADA7D29E3D34C009ED465 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				A4D0B93229E93B8F00FB544C /* DataStorageInfra */,
-				A4D0B93129E93B8F00FB544C /* NetworkInfra */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -190,6 +218,8 @@
 		A49A064E299C952300688FEE = {
 			isa = PBXGroup;
 			children = (
+				A4E8A6D62A49538F000F8F12 /* DataStorageInfra */,
+				A4E8A6D72A49538F000F8F12 /* NetworkInfra */,
 				A49A0659299C952300688FEE /* MVVM-Clean */,
 				A4DAE4C229E3EC2F00CB97CB /* MVVM-CleanTestsSnapShots */,
 				A49A0658299C952300688FEE /* Products */,
@@ -309,6 +339,8 @@
 			name = "MVVM-Clean";
 			packageProductDependencies = (
 				A46ADA8429E3D7F4009ED465 /* SnapKit-Dynamic */,
+				A4E8A6D82A495393000F8F12 /* DataStorageInfra */,
+				A4E8A6DA2A495396000F8F12 /* NetworkInfra */,
 			);
 			productName = "MVVM-Clean";
 			productReference = A49A0657299C952300688FEE /* MVVM-Clean.app */;
@@ -383,8 +415,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4D0B93329E93B8F00FB544C /* NetworkInfra in Resources */,
-				A4D0B93429E93B8F00FB544C /* DataStorageInfra in Resources */,
 				A49A0664299C952400688FEE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,14 +435,18 @@
 			files = (
 				A4D3C3452A1F4EAD00352AD1 /* BookItemDetailViewController.swift in Sources */,
 				A4D3C3472A1F4EC100352AD1 /* BookItemDetailViewModel.swift in Sources */,
+				A461A7D62A3C2C0D00F50DB0 /* AppCoordinator.swift in Sources */,
 				A4DAE4D729E3F7C800CB97CB /* BookListUseCase.swift in Sources */,
+				A461A7DB2A3C303500F50DB0 /* GeneralServiceLoader.swift in Sources */,
 				A4D0B92929E939C900FB544C /* UIControl+Extension.swift in Sources */,
+				A461A7E32A3C339400F50DB0 /* EnvironmentSetting.swift in Sources */,
 				A4D0B93A29E941F100FB544C /* BookListDefaultRepository.swift in Sources */,
 				A46ADA8229E3D51D009ED465 /* BookListViewController.swift in Sources */,
 				A4DAE4DC29E52BBB00CB97CB /* BookCellSetting.swift in Sources */,
 				A4DAE4DA29E52B9A00CB97CB /* BookImageCellViewModel.swift in Sources */,
 				A4DAE4E029E52D1900CB97CB /* BookImageCell.swift in Sources */,
 				A4D3C3432A1DF1ED00352AD1 /* UITableViewCell+Extension.swift in Sources */,
+				A461A7D82A3C2D0500F50DB0 /* BookListFlowDIContainer.swift in Sources */,
 				A49A065B299C952300688FEE /* AppDelegate.swift in Sources */,
 				A4DAE4D529E3F79400CB97CB /* BookListEntity.swift in Sources */,
 				A4D0B93829E93CAE00FB544C /* BookListRepository.swift in Sources */,
@@ -716,6 +750,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4DAE4B829E3EA2C00CB97CB /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
 			productName = iOSSnapshotTestCase;
+		};
+		A4E8A6D82A495393000F8F12 /* DataStorageInfra */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DataStorageInfra;
+		};
+		A4E8A6DA2A495396000F8F12 /* NetworkInfra */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkInfra;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
