@@ -17,6 +17,8 @@ public protocol BookListViewModelInput {
     var refreshTableContent: PassthroughSubject<Void, Never> { get }
 
     func updateBookTitleContent()
+
+    var itemSelectedTrigger: PassthroughSubject<Int, Never> { get }
 }
 
 // Output
@@ -26,6 +28,8 @@ public protocol BookListViewModelOutput {
     var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> { get }
 
     var activityItemPublisher: AnyPublisher<Bool, Never> { get }
+    
+    var bookDetailItemPublisher: AnyPublisher<RPBookItemDetailEntity?, Never>{ get }
 }
 
 // Manager
@@ -44,14 +48,19 @@ public class BookListViewModel: BookListViewModelManager, BookListViewModelInput
 
     // private variables
     @Published public var _bookItems: [BookItemViewModelProtocol] = []
-
+    @Published private var _bookDetailItem: RPBookItemDetailEntity?
     // input
     public var refreshTableContent: PassthroughSubject<Void, Never> = .init()
     public var startLoadingActivity: PassthroughSubject<Bool, Never> = .init()
+    public var itemSelectedTrigger: PassthroughSubject<Int, Never> = .init()
 
     // output
     public var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> {
         return $_bookItems.eraseToAnyPublisher()
+    }
+
+    public var bookDetailItemPublisher: AnyPublisher<RPBookItemDetailEntity?, Never> {
+        return $_bookDetailItem.eraseToAnyPublisher()
     }
 
     public var bookTitleText: CurrentValueSubject<String, Never> = CurrentValueSubject("default bookName")
@@ -77,9 +86,9 @@ public class BookListViewModel: BookListViewModelManager, BookListViewModelInput
 
     private func initializeAction() {
         // binding tableview event
-        refreshTableContent
+        self.refreshTableContent
             .setFailureType(to: Error.self)
-            .flatMap {[unowned self] _ in
+            .flatMap { [unowned self] _ in
                 self._activityItem = true
                 return self.useCase.fetchBookItems()
             }.sink { error in
@@ -92,6 +101,15 @@ public class BookListViewModel: BookListViewModelManager, BookListViewModelInput
             }
             .store(in: &subscription)
 
+        self.itemSelectedTrigger
+            .sink { [weak self] index in
+                guard let self = self else { return }
+                let model = BookListModel()
+                if let cellViewModel = self._bookItems[index] as? BookImageCellViewModel {
+                    self._bookDetailItem = model.converToBookItemDetailEntity(cellViewModel: cellViewModel)
+                }
+            }
+            .store(in: &subscription)
     }
 }
 

@@ -9,7 +9,15 @@
  * or redistributed directly or indirectly in any medium.
  */
 
+import Combine
 import Foundation
-public final class BookItemDetailViewModel{
-    
+
+public protocol RPBookItemDetailUseCase {}
+
+public final class RPBookItemDetailDefaultUseCase: RPBookItemDetailUseCase {
+    private var repository: RPBookItemDetailRepository
+
+    public init(repository: RPBookItemDetailRepository) {
+        self.repository = repository
+    }
 }

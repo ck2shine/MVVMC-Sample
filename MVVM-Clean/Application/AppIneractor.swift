@@ -12,7 +12,7 @@
 import Foundation
 import UIKit
 
-public class AppCoordinator{
+public class AppIneractor{
     
     private var window: UIWindow?
     
@@ -25,9 +25,14 @@ public class AppCoordinator{
     }
     
     private func startBookListProcess(){
-        let bookDIContrainer = BookListFlowDIContainer(denpendency: BookListFlowDIContainer.Dependency(bookListAPILoader: GeneralServiceLoader().bookListAPILoader()))
         
-        let rootViewController = bookDIContrainer.createBookListViewController()
+        let bookDIContrainer = BookListDependency(denpendency: BookListDependency.Dependency(bookListAPILoader: GeneralServiceLoader().bookListAPILoader()))
+        
+//
+//        let bookDIContrainer = BookListFlowDIContainer(denpendency: BookListFlowDIContainer.Dependency(bookListAPILoader: GeneralServiceLoader().bookListAPILoader()))
+    
+       
+        let rootViewController = BookListViewController(dependency: bookDIContrainer)
         self.window?.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()
         

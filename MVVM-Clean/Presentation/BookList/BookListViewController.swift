@@ -45,9 +45,15 @@ public class BookListViewController: UIViewController {
         return button
     }()
     
-    public var viewModel: BookListViewModel
+    private var dependency: ContainerDependency
     
-    public init(viewModel: BookListViewModel) {
+    private var viewModel: BookListViewModel
+    
+    public init(dependency: ContainerDependency) {
+        self.dependency = dependency
+        guard let viewModel = dependency.resolve(BookListViewModel.self) else {
+            fatalError("cano not find viewModel")
+        }
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -145,6 +151,14 @@ public extension BookListViewController {
                 }else{
                     self.loadingActiviy.stopAnimating()
                 }
+            }
+            .store(in: &subscriptions)
+        
+        output.bookDetailItemPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { itemDetailEntity in
+//                let container = BookListFlowDIContainer(denpendency: <#BookListFlowDIContainer.Dependency#>)
+//                let view = container.createBookDetailViewController()
             }
             .store(in: &subscriptions)
     }

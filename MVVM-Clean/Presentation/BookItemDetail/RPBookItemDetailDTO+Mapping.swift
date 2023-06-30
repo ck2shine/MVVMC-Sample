@@ -9,14 +9,15 @@
  * or redistributed directly or indirectly in any medium.
  */
 
-import UIKit
+import Foundation
 
-public class BookItemDetailViewController: UIViewController {
-
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+public struct RPBookItemDetailDTO: Decodable{
+    var bookName: String
+    var bookImageName: String
+    var bookDescription: String
+}
+extension RPBookItemDetailDTO {
+    public func toDomain() -> RPBookItemDetailEntity {
+        return RPBookItemDetailEntity(bookName: bookName, bookImageName: bookImageName, bookDescription: bookDescription)
     }
-
 }

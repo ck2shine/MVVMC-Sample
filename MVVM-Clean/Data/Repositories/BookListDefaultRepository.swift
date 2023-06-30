@@ -9,11 +9,10 @@
  * or redistributed directly or indirectly in any medium.
  */
 
-import Foundation
 import Combine
+import Foundation
 import NetworkInfra
-public final class BookListDefaultRepository: BookListRepository{
-    
+public final class BookListDefaultRepository: BookListRepository {
     private let bookListServiceLoader: DataServiceLoader
     
     public init(bookListServiceLoader: DataServiceLoader) {
@@ -21,58 +20,41 @@ public final class BookListDefaultRepository: BookListRepository{
     }
     
     public func retrieveBookItems() -> AnyPublisher<BookListEntity, Error> {
-        
-        Future{ promise in
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-            
-                var param = [String:String]()
-                param["name"] = "John"
-                let endPoint = NetworkEndpoint<BookListDTO>(APIParameters: param, method: .post)
+        Future { promise in
+            var param = [String: String]()
+            param["name"] = "John"
+            let endPoint = NetworkEndpoint<BookListDTO>(APIParameters: param, method: .post)
                 
-                self.bookListServiceLoader.load(with: endPoint) { result in
-                    
+            self.bookListServiceLoader.load(with: endPoint) { result in
+                switch result {
+                case .success(let responseDTO):
+                    promise(.success(responseDTO.toDomain()))
+                case .failure(let error):
+                    promise(.failure(error))
                 }
-                
-//                promise(.failure(APIError.networkError("Customer error")))
-                
-                let entity1 = BookItemEntity(bookName: "1st Book", bookImageName: "pencil", bookDescription: "My first Book")
-                let entity2 = BookItemEntity(bookName: "2nd Book", bookImageName: "eraser", bookDescription: "My second Book")
-                let entity3 = BookItemEntity(bookName: "3rd Book", bookImageName: "sun.dust.fill", bookDescription: "My Third Book")
-                
-                let list = BookListEntity(items: [entity1,entity2,entity3])
-                
-    
-                    promise(.success(list))
             }
-            
         }
         .eraseToAnyPublisher()
     }
     
     public func retrieveBookFromCache() -> AnyPublisher<BookListEntity, Error> {
-        Future{ promise in
+        Future { promise in
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //                promise(.failure(APIError.networkError("Customer error")))
                 
                 let entity = BookItemEntity(bookName: "1st Book", bookImageName: "book1", bookDescription: "My first Book")
                 
                 let list = BookListEntity(items: [entity])
-                    promise(.success(list))
+                promise(.success(list))
             }
-            
         }
         .eraseToAnyPublisher()
     }
-    
 }
 
-enum APIError: Error{
+enum APIError: Error {
     case networkError(String)
-    
-    
 }
 
 /*
