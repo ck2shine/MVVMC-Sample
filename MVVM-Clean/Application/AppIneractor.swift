@@ -27,12 +27,7 @@ public class AppIneractor{
     private func startBookListProcess(){
         
         let bookDIContrainer = BookListDependency(denpendency: BookListDependency.Dependency(bookListAPILoader: GeneralServiceLoader().bookListAPILoader()))
-        
-//
-//        let bookDIContrainer = BookListFlowDIContainer(denpendency: BookListFlowDIContainer.Dependency(bookListAPILoader: GeneralServiceLoader().bookListAPILoader()))
-    
-       
-        let rootViewController = BookListViewController(dependency: bookDIContrainer)
+        let rootViewController =  UINavigationController(rootViewController: BookListViewController(dependency: bookDIContrainer))
         self.window?.rootViewController = rootViewController
         self.window?.makeKeyAndVisible()
         

@@ -19,12 +19,13 @@ public class RPBookItemDetailViewController: UIViewController {
     
     private var viewModel: RPBookItemDetailViewModel
     
-    public init(dependency: ContainerDependency) {
+    public init(dependency: ContainerDependency, entity: RPBookItemDetailEntity? = nil) {
         self.dependency = dependency
         guard let viewModel = dependency.resolve(RPBookItemDetailViewModel.self) else {
-            fatalError("cano not find viewModel")
+            fatalError("cano not find RPBookItemDetailViewModel")
         }
         self.viewModel = viewModel
+        self.viewModel.entity = entity
         super.init(nibName: nil, bundle: Bundle(for: Self.self))
     }
     
@@ -41,7 +42,7 @@ public class RPBookItemDetailViewController: UIViewController {
 
 extension RPBookItemDetailViewController{
     private func setupUI(){
-        
+        self.view.backgroundColor = .white
     }
     
     private func bindingUIs(){

@@ -12,33 +12,37 @@
 import XCTest
 import iOSSnapshotTestCase
 import MVVM_Clean
-
+import NetworkInfra
 class BookListViewControllerSnapshotTest: FBSnapshotTestCase {
 
+   
+    
     override func setUp() {
         super.setUp()
-        recordMode = true
-    }
-    
-    
-    private class  MockBookListUseCase: BookListUseCase{
-        
+        recordMode = false
     }
     
     func test_bookListViewControllerUI(){
       
-        let mockUserCase = MockBookListUseCase()
-        
-        let viewModel = BookListViewModel(useCase: mockUserCase)
-        
-        let sut = BookListViewController(viewModel: viewModel)
+        let sut = self.makeSnapShotSUT()
+
         sut.loadViewIfNeeded()
-        XCTAssertNotNil(sut.bookTitleLabel)
-        XCTAssertNotNil(sut.searchButton)
+
         FBSnapshotVerifyViewController(sut)
     }
+    
+    private func makeSnapShotSUT()-> BookListViewController{
+       
 
- 
+        let service = RemoteNetworkService(config: RemoteConfing(fetchUrl: URL(string: "www.test.com")!))
+        let mockLoader = RemoteDataLoader(inService: service)
+        
+        let dependency = BookListDependency(denpendency: BookListDependency.Dependency(bookListAPILoader: mockLoader))
+        let sut = BookListViewController(dependency: dependency)
+        return sut
+    }
+
+    
 
 }
 

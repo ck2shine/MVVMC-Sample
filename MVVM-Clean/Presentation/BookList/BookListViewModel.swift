@@ -25,11 +25,11 @@ public protocol BookListViewModelInput {
 public protocol BookListViewModelOutput {
     var bookTitleText: CurrentValueSubject<String, Never> { get }
 
-    var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> { get }
+    var bookItemsPublisher: CurrentValueSubject<[BookItemViewModelProtocol], Never> { get }
 
-    var activityItemPublisher: AnyPublisher<Bool, Never> { get }
-    
-    var bookDetailItemPublisher: AnyPublisher<RPBookItemDetailEntity?, Never>{ get }
+    var activityItemPublisher: CurrentValueSubject<Bool, Never> { get }
+
+    var bookDetailItemPublisher: CurrentValueSubject<RPBookItemDetailEntity?, Never> { get }
 }
 
 // Manager
@@ -41,29 +41,19 @@ public protocol BookListViewModelManager {
 }
 
 public class BookListViewModel: BookListViewModelManager, BookListViewModelInput, BookListViewModelOutput {
-    @Published private var _activityItem: Bool = false
-    public var activityItemPublisher: AnyPublisher<Bool, Never> {
-        return $_activityItem.eraseToAnyPublisher()
-    }
-
-    // private variables
-    @Published public var _bookItems: [BookItemViewModelProtocol] = []
-    @Published private var _bookDetailItem: RPBookItemDetailEntity?
     // input
     public var refreshTableContent: PassthroughSubject<Void, Never> = .init()
     public var startLoadingActivity: PassthroughSubject<Bool, Never> = .init()
     public var itemSelectedTrigger: PassthroughSubject<Int, Never> = .init()
 
     // output
-    public var bookItemsPublisher: AnyPublisher<[BookItemViewModelProtocol], Never> {
-        return $_bookItems.eraseToAnyPublisher()
-    }
+    @Published public var activityItemPublisher = CurrentValueSubject<Bool, Never>(false)
 
-    public var bookDetailItemPublisher: AnyPublisher<RPBookItemDetailEntity?, Never> {
-        return $_bookDetailItem.eraseToAnyPublisher()
-    }
+    @Published public var bookItemsPublisher = CurrentValueSubject<[BookItemViewModelProtocol], Never>([])
 
-    public var bookTitleText: CurrentValueSubject<String, Never> = CurrentValueSubject("default bookName")
+    @Published public var bookDetailItemPublisher = CurrentValueSubject<RPBookItemDetailEntity?, Never>(nil)
+
+    @Published public var bookTitleText = CurrentValueSubject<String, Never>("default bookName")
 
     let buttonTapped = PassthroughSubject<Void, Never>()
     public var input: BookListViewModelInput {
@@ -89,24 +79,25 @@ public class BookListViewModel: BookListViewModelManager, BookListViewModelInput
         self.refreshTableContent
             .setFailureType(to: Error.self)
             .flatMap { [unowned self] _ in
-                self._activityItem = true
+                self.activityItemPublisher.value = true
                 return self.useCase.fetchBookItems()
             }.sink { error in
                 print("error \(error)")
             } receiveValue: { [unowned self] bookItems in
+                self.activityItemPublisher.value = false
                 let model = BookListModel()
                 let items = model.convertDataToModels(entity: bookItems)
-                self._bookItems = items
-                self._activityItem = false
+                self.bookItemsPublisher.value = items
+               
             }
             .store(in: &subscription)
 
-        self.itemSelectedTrigger
+        itemSelectedTrigger
             .sink { [weak self] index in
                 guard let self = self else { return }
                 let model = BookListModel()
-                if let cellViewModel = self._bookItems[index] as? BookImageCellViewModel {
-                    self._bookDetailItem = model.converToBookItemDetailEntity(cellViewModel: cellViewModel)
+                if let cellViewModel = self.bookItemsPublisher.value[index] as? BookImageCellViewModel {
+                    self.bookDetailItemPublisher.value = model.converToBookItemDetailEntity(cellViewModel: cellViewModel)
                 }
             }
             .store(in: &subscription)

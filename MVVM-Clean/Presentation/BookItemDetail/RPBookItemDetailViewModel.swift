@@ -22,6 +22,9 @@ public protocol RPBookItemDetailViewModelManager {
 }
 
 public class RPBookItemDetailViewModel: RPBookItemDetailViewModelInput, RPBookItemDetailViewModelOutput, RPBookItemDetailViewModelManager {
+    
+    public var entity: RPBookItemDetailEntity?
+    
     private var subscription = Set<AnyCancellable>()
     private let useCase: RPBookItemDetailUseCase
 

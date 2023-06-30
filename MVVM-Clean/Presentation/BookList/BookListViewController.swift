@@ -67,11 +67,6 @@ public class BookListViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         initializeBinding()
-    }
-    
-    override public func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // trigger refresh table content
         viewModel.input.refreshTableContent.send(())
     }
 }
@@ -138,7 +133,7 @@ public extension BookListViewController {
         
         // tableview binding
         output.bookItemsPublisher
-            .receive(on: DispatchQueue.main)
+            .dropFirst()
             .sink { [unowned self] _ in
                 self.bookListTableView.reloadData()
             }
@@ -155,10 +150,12 @@ public extension BookListViewController {
             .store(in: &subscriptions)
         
         output.bookDetailItemPublisher
+            .dropFirst()
             .receive(on: DispatchQueue.main)
-            .sink { itemDetailEntity in
-//                let container = BookListFlowDIContainer(denpendency: <#BookListFlowDIContainer.Dependency#>)
-//                let view = container.createBookDetailViewController()
+            .sink {[unowned self] itemDetailEntity in
+                self.dependency.register(itemDetailEntity)
+                let view = RPBookItemDetailViewController(dependency: self.dependency , entity: itemDetailEntity)
+                self.navigationController?.pushViewController(view, animated: true)
             }
             .store(in: &subscriptions)
     }
@@ -166,14 +163,14 @@ public extension BookListViewController {
 
 extension BookListViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel._bookItems.count
+        return viewModel.bookItemsPublisher.value.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BookImageCell.identifier, for: indexPath)
         
-        let cellViewModel = viewModel._bookItems[indexPath.row]
+        let cellViewModel = viewModel.bookItemsPublisher.value[indexPath.row]
         if let bookImageCell = cell as? BookCellSettingProtocol{
             bookImageCell.setupCell(cellViewModel)
         }
@@ -186,11 +183,11 @@ extension BookListViewController: UITableViewDataSource {
 
 extension BookListViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellHeight = self.viewModel._bookItems[indexPath.row].cellHeight
+        let cellHeight = self.viewModel.bookItemsPublisher.value[indexPath.row].cellHeight
         return cellHeight
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.viewModel.input.itemSelectedTrigger.send(indexPath.row)
     }
 }

@@ -12,8 +12,8 @@
 import Foundation
 
 public class Container {
-    private var dependencies: [ObjectIdentifier: () -> Any] = [:]
-
+    public var dependencies: [ObjectIdentifier: () -> Any] = [:]
+    
     public func register<T>(forKey key: T.Type, _ factory: @escaping () -> T) {
         let objectKey = ObjectIdentifier(key)
         dependencies[objectKey] = factory
