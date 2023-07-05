@@ -11,6 +11,11 @@
 		A461A7D82A3C2D0500F50DB0 /* BookListFlowDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A461A7D72A3C2D0500F50DB0 /* BookListFlowDIContainer.swift */; };
 		A461A7DB2A3C303500F50DB0 /* GeneralServiceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A461A7DA2A3C303500F50DB0 /* GeneralServiceLoader.swift */; };
 		A461A7E32A3C339400F50DB0 /* EnvironmentSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A461A7E22A3C339400F50DB0 /* EnvironmentSetting.swift */; };
+		A462DFF12A53BA7D005053A3 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = A462DFF02A53BA7D005053A3 /* SnapshotTesting */; };
+		A462DFF62A53BF1B005053A3 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462DFF32A53BF1B005053A3 /* TestingAppDelegate.swift */; };
+		A462DFF72A53BF1B005053A3 /* TestingSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462DFF42A53BF1B005053A3 /* TestingSceneDelegate.swift */; };
+		A462DFF82A53BF1B005053A3 /* TestingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462DFF52A53BF1B005053A3 /* TestingRootViewController.swift */; };
+		A462DFFA2A53C00B005053A3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A462DFF92A53C00B005053A3 /* main.swift */; };
 		A46ADA8229E3D51D009ED465 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46ADA8129E3D51D009ED465 /* BookListViewController.swift */; };
 		A46ADA8529E3D7F4009ED465 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A46ADA8429E3D7F4009ED465 /* SnapKit-Dynamic */; };
 		A46C4BE729E7A3DC0032A411 /* BookListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C4BE629E7A3DC0032A411 /* BookListModel.swift */; };
@@ -29,8 +34,6 @@
 		A4D0B93A29E941F100FB544C /* BookListDefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D0B93929E941F100FB544C /* BookListDefaultRepository.swift */; };
 		A4D3C3432A1DF1ED00352AD1 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D3C3422A1DF1ED00352AD1 /* UITableViewCell+Extension.swift */; };
 		A4DAE4CA29E3EC9500CB97CB /* BookListViewControllerSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4B329E3E72600CB97CB /* BookListViewControllerSnapshotTest.swift */; };
-		A4DAE4CD29E3ECB600CB97CB /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = A4DAE4CC29E3ECB600CB97CB /* iOSSnapshotTestCase */; };
-		A4DAE4CF29E3ECB600CB97CB /* iOSSnapshotTestCase in Embed Frameworks */ = {isa = PBXBuildFile; productRef = A4DAE4CC29E3ECB600CB97CB /* iOSSnapshotTestCase */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A4DAE4D129E3F65A00CB97CB /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D029E3F65A00CB97CB /* BookListViewModel.swift */; };
 		A4DAE4D529E3F79400CB97CB /* BookListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D429E3F79400CB97CB /* BookListEntity.swift */; };
 		A4DAE4D729E3F7C800CB97CB /* BookListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DAE4D629E3F7C800CB97CB /* BookListUseCase.swift */; };
@@ -61,7 +64,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A4DAE4CF29E3ECB600CB97CB /* iOSSnapshotTestCase in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +75,10 @@
 		A461A7D72A3C2D0500F50DB0 /* BookListFlowDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListFlowDIContainer.swift; sourceTree = "<group>"; };
 		A461A7DA2A3C303500F50DB0 /* GeneralServiceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralServiceLoader.swift; sourceTree = "<group>"; };
 		A461A7E22A3C339400F50DB0 /* EnvironmentSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSetting.swift; sourceTree = "<group>"; };
+		A462DFF32A53BF1B005053A3 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		A462DFF42A53BF1B005053A3 /* TestingSceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingSceneDelegate.swift; sourceTree = "<group>"; };
+		A462DFF52A53BF1B005053A3 /* TestingRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingRootViewController.swift; sourceTree = "<group>"; };
+		A462DFF92A53C00B005053A3 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A46ADA8129E3D51D009ED465 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		A46C4BE629E7A3DC0032A411 /* BookListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListModel.swift; sourceTree = "<group>"; };
 		A4956F6F2A4E9055005CD9BA /* RPBookItemDetailDefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPBookItemDetailDefaultRepository.swift; sourceTree = "<group>"; };
@@ -121,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4DAE4CD29E3ECB600CB97CB /* iOSSnapshotTestCase in Frameworks */,
+				A462DFF12A53BA7D005053A3 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,11 +152,22 @@
 			path = ServiceLoader;
 			sourceTree = "<group>";
 		};
+		A462DFF22A53BEF9005053A3 /* MockInitializeClasses */ = {
+			isa = PBXGroup;
+			children = (
+				A462DFF32A53BF1B005053A3 /* TestingAppDelegate.swift */,
+				A462DFF52A53BF1B005053A3 /* TestingRootViewController.swift */,
+				A462DFF42A53BF1B005053A3 /* TestingSceneDelegate.swift */,
+			);
+			path = MockInitializeClasses;
+			sourceTree = "<group>";
+		};
 		A46ADA7829E3D11C009ED465 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				A461A7D92A3C301F00F50DB0 /* ServiceLoader */,
 				A461A7D42A3C2B7600F50DB0 /* DIContainer */,
+				A462DFF92A53C00B005053A3 /* main.swift */,
 				A461A7D52A3C2C0D00F50DB0 /* AppIneractor.swift */,
 				A461A7E22A3C339400F50DB0 /* EnvironmentSetting.swift */,
 			);
@@ -305,6 +322,7 @@
 		A4DAE4C229E3EC2F00CB97CB /* MVVM-CleanTestsSnapShots */ = {
 			isa = PBXGroup;
 			children = (
+				A462DFF22A53BEF9005053A3 /* MockInitializeClasses */,
 				A4DAE4CB29E3EC9F00CB97CB /* BookList */,
 			);
 			path = "MVVM-CleanTestsSnapShots";
@@ -402,7 +420,7 @@
 			);
 			name = "MVVM-CleanTestsSnapShots";
 			packageProductDependencies = (
-				A4DAE4CC29E3ECB600CB97CB /* iOSSnapshotTestCase */,
+				A462DFF02A53BA7D005053A3 /* SnapshotTesting */,
 			);
 			productName = "MVVM-CleanTestsSnapShots";
 			productReference = A4DAE4C129E3EC2F00CB97CB /* MVVM-CleanTestsSnapShots.xctest */;
@@ -438,7 +456,7 @@
 			mainGroup = A49A064E299C952300688FEE;
 			packageReferences = (
 				A46ADA8329E3D7F4009ED465 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				A4DAE4B829E3EA2C00CB97CB /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
+				A462DFEF2A53BA6C005053A3 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = A49A0658299C952300688FEE /* Products */;
 			projectDirPath = "";
@@ -495,6 +513,7 @@
 				A49A065B299C952300688FEE /* AppDelegate.swift in Sources */,
 				A4956F7B2A4E9055005CD9BA /* RPBookItemDetailViewModel.swift in Sources */,
 				A4DAE4D529E3F79400CB97CB /* BookListEntity.swift in Sources */,
+				A462DFFA2A53C00B005053A3 /* main.swift in Sources */,
 				A4D0B93829E93CAE00FB544C /* BookListRepository.swift in Sources */,
 				A4EEAC7E29F1183B00280EEA /* BookListDTO+Mapping.swift in Sources */,
 				A4956F772A4E9055005CD9BA /* RPBookItemDetailUseCase.swift in Sources */,
@@ -507,7 +526,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A462DFF72A53BF1B005053A3 /* TestingSceneDelegate.swift in Sources */,
+				A462DFF62A53BF1B005053A3 /* TestingAppDelegate.swift in Sources */,
 				A4DAE4CA29E3EC9500CB97CB /* BookListViewControllerSnapshotTest.swift in Sources */,
+				A462DFF82A53BF1B005053A3 /* TestingRootViewController.swift in Sources */,
 				A4956F7E2A4E9A79005CD9BA /* BookListViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,6 +790,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A462DFEF2A53BA6C005053A3 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		A46ADA8329E3D7F4009ED465 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -777,27 +807,18 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		A4DAE4B829E3EA2C00CB97CB /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
-			requirement = {
-				kind = versionRange;
-				maximumVersion = 9.0.0;
-				minimumVersion = 8.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A462DFF02A53BA7D005053A3 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A462DFEF2A53BA6C005053A3 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
 		A46ADA8429E3D7F4009ED465 /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A46ADA8329E3D7F4009ED465 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
-		};
-		A4DAE4CC29E3ECB600CB97CB /* iOSSnapshotTestCase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A4DAE4B829E3EA2C00CB97CB /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
-			productName = iOSSnapshotTestCase;
 		};
 		A4E8A6D82A495393000F8F12 /* DataStorageInfra */ = {
 			isa = XCSwiftPackageProductDependency;

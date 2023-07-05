@@ -12,46 +12,6 @@
 import Foundation
 import NetworkInfra
 import UIKit
-// public protocol BookListFlowDependency {
-//    func createBookListViewController() -> UIViewController
-//    func createBookDetailViewController() -> UIViewController
-// }
-//
-// public class BookListFlowDIContainer: BookListFlowDependency {
-//    private var denpendency: Dependency
-//
-//    public struct Dependency {
-////        public init(bookListAPILoader: DataServiceLoader){
-////
-////        }
-//        var bookListAPILoader: DataServiceLoader
-//    }
-//
-//    public init(denpendency: Dependency) {
-//        self.denpendency = denpendency
-//    }
-// }
-//
-// extension BookListFlowDIContainer {
-//    public func createBookListViewController() -> UIViewController {
-//        // let repository = BookListDefaultRepository(bookListServiceLoader: denpendency.bookListAPILoader)
-//        let repository = BookListMockDefaultRepository()
-//
-//        let useCase = BookListDefaultUseCase(repository: repository)
-//        let viewModel = BookListViewModel(useCase: useCase)
-//        let view = BookListViewController(viewModel: viewModel)
-//        return view
-//    }
-//
-//    public func createBookDetailViewController() -> UIViewController{
-//        let repository = RPBookItemDetailDefaultRepository()
-//        let useCase = RPBookItemDetailDefaultUseCase(repository: repository)
-//        let viewModel = RPBookItemDetailViewModel(usecase: useCase)
-//        let view = RPBookItemDetailViewController(viewModel: viewModel)
-//
-//        return view
-//    }
-// }
 
 public protocol ContainerDependency {
     func resolve<Service>(_ type: Service.Type) -> Service?
@@ -59,8 +19,6 @@ public protocol ContainerDependency {
 }
 
 public class BookListDependency: ContainerDependency {
-  
-    
     private let container = Container()
     public struct Dependency {
         public init(bookListAPILoader: DataServiceLoader) {
@@ -88,19 +46,20 @@ public class BookListDependency: ContainerDependency {
         }
 
         // register bookDetail
-        container.register(forKey: RPBookItemDetailViewModel.self) {
+        container.register(forKey: RPBookItemDetailViewModel.self) { [weak self] in
+
 //            let repository = BookListDefaultRepository(bookListServiceLoader: self.denpendency.bookListAPILoader)
             let repository = RPBookItemDetailDefaultRepository()
-
+            let entity = self?.container.resolve(forKey: RPBookItemDetailEntity.self)
             let useCase = RPBookItemDetailDefaultUseCase(repository: repository)
-            let viewModel = RPBookItemDetailViewModel(usecase: useCase)
+            let viewModel = RPBookItemDetailViewModel(usecase: useCase, entity: entity)
             return viewModel
         }
     }
 
     public func register<Service>(_ item: Service) {
         container.register(forKey: Service.self) {
-            return item
+            item
         }
     }
 

@@ -152,9 +152,13 @@ public extension BookListViewController {
         output.bookDetailItemPublisher
             .dropFirst()
             .receive(on: DispatchQueue.main)
-            .sink {[unowned self] itemDetailEntity in
-                self.dependency.register(itemDetailEntity)
-                let view = RPBookItemDetailViewController(dependency: self.dependency , entity: itemDetailEntity)
+            .sink {[weak self] itemDetailEntity in
+                guard let self = self else {return}
+                if let entity = itemDetailEntity{
+                    self.dependency.register(entity)
+                }
+       
+                let view = RPBookItemDetailViewController(dependency: self.dependency)
                 self.navigationController?.pushViewController(view, animated: true)
             }
             .store(in: &subscriptions)

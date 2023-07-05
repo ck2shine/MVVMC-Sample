@@ -10,7 +10,6 @@
  */
 
 import Combine
-import iOSSnapshotTestCase
 @testable import MVVM_Clean
 import NetworkInfra
 import XCTest

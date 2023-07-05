@@ -14,7 +14,9 @@ import Foundation
 
 public protocol RPBookItemDetailViewModelInput {}
 
-public protocol RPBookItemDetailViewModelOutput {}
+public protocol RPBookItemDetailViewModelOutput {
+    var bookTitleNamePublisher: CurrentValueSubject<String?, Never> { get set }
+}
 
 public protocol RPBookItemDetailViewModelManager {
     var input: RPBookItemDetailViewModelInput { get }
@@ -23,13 +25,17 @@ public protocol RPBookItemDetailViewModelManager {
 
 public class RPBookItemDetailViewModel: RPBookItemDetailViewModelInput, RPBookItemDetailViewModelOutput, RPBookItemDetailViewModelManager {
     
-    public var entity: RPBookItemDetailEntity?
+    //output
+    public var bookTitleNamePublisher =  CurrentValueSubject<String?, Never>(nil)
     
+    public var entity: RPBookItemDetailEntity?
+
     private var subscription = Set<AnyCancellable>()
     private let useCase: RPBookItemDetailUseCase
 
-    public init(usecase: RPBookItemDetailUseCase) {
+    public init(usecase: RPBookItemDetailUseCase , entity: RPBookItemDetailEntity? = nil) {
         self.useCase = usecase
+        self.entity = entity
         self.initializeAction()
     }
 
@@ -47,5 +53,7 @@ public class RPBookItemDetailViewModel: RPBookItemDetailViewModelInput, RPBookIt
 }
 
 extension RPBookItemDetailViewModel {
-    private func initializeAction() {}
+    private func initializeAction() {
+        bookTitleNamePublisher.value = entity?.bookName
+    }
 }

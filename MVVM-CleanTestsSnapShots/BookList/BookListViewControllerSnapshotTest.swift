@@ -10,16 +10,15 @@
  */
 
 import XCTest
-import iOSSnapshotTestCase
+import SnapshotTesting
 import MVVM_Clean
 import NetworkInfra
-class BookListViewControllerSnapshotTest: FBSnapshotTestCase {
+class BookListViewControllerSnapshotTest: XCTestCase {
 
    
     
     override func setUp() {
         super.setUp()
-        recordMode = false
     }
     
     func test_bookListViewControllerUI(){
@@ -28,7 +27,10 @@ class BookListViewControllerSnapshotTest: FBSnapshotTestCase {
 
         sut.loadViewIfNeeded()
 
-        FBSnapshotVerifyViewController(sut)
+        assertSnapshot(matching: sut, as: .image)
+
+        isRecording = false
+
     }
     
     private func makeSnapShotSUT()-> BookListViewController{
