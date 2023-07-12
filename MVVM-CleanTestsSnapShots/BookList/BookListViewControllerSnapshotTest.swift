@@ -22,7 +22,7 @@ class BookListViewControllerSnapshotTest: XCTestCase {
     }
     
     func test_bookListViewControllerUI(){
-      
+
         let sut = self.makeSnapShotSUT()
 
         sut.loadViewIfNeeded()

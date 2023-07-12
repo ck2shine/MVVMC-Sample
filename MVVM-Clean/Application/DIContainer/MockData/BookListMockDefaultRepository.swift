@@ -20,7 +20,7 @@ public final class BookListMockDefaultRepository: BookListRepository{
                 
                 let entity1 = BookItemEntity(bookName: "1st Book", bookImageName: "pencil", bookDescription: "My first Book")
                 let entity2 = BookItemEntity(bookName: "2nd Book", bookImageName: "eraser", bookDescription: "My second Book")
-                let entity3 = BookItemEntity(bookName: "3rd Book", bookImageName: "sun.dust.fill", bookDescription: "My Third Book")
+                let entity3 = BookItemEntity(bookName: "About Cook", bookImageName: "sun.dust.fill", bookDescription: "Flavors Unleashed is a tantalizing culinary expedition that takes food enthusiasts on a vibrant and aromatic voyage through the diverse and delicious world of cooking. With a plethora of recipes, tips, and personal anecdotes, this book is a treasure trove for both novice and experienced cooks alike.")
                 
                 let list = BookListEntity(items: [entity1,entity2,entity3])
                 

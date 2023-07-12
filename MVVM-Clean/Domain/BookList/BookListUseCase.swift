@@ -25,6 +25,9 @@ public class BookListDefaultUseCase: BookListUseCase{
     }
     
     public func fetchBookItems() -> AnyPublisher<BookListEntity, Error> {
+        //fetch cache ???
+        //??>> cage
+        //>>network
         return self.repository.retrieveBookItems()
     }
     

@@ -16,6 +16,7 @@ public protocol RPBookItemDetailViewModelInput {}
 
 public protocol RPBookItemDetailViewModelOutput {
     var bookTitleNamePublisher: CurrentValueSubject<String?, Never> { get set }
+    var bookDescriptionPublisher: CurrentValueSubject<String?, Never> { get set }
 }
 
 public protocol RPBookItemDetailViewModelManager {
@@ -24,9 +25,12 @@ public protocol RPBookItemDetailViewModelManager {
 }
 
 public class RPBookItemDetailViewModel: RPBookItemDetailViewModelInput, RPBookItemDetailViewModelOutput, RPBookItemDetailViewModelManager {
+  
     
     //output
     public var bookTitleNamePublisher =  CurrentValueSubject<String?, Never>(nil)
+    public var bookDescriptionPublisher = CurrentValueSubject<String?, Never>(nil)
+    
     
     public var entity: RPBookItemDetailEntity?
 
@@ -55,5 +59,6 @@ public class RPBookItemDetailViewModel: RPBookItemDetailViewModelInput, RPBookIt
 extension RPBookItemDetailViewModel {
     private func initializeAction() {
         bookTitleNamePublisher.value = entity?.bookName
+        bookDescriptionPublisher.value = entity?.bookDescription
     }
 }

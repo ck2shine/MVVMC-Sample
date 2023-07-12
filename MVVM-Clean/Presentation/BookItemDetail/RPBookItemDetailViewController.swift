@@ -14,6 +14,7 @@ import UIKit
 public class RPBookItemDetailViewController: UIViewController {
     private var bookTitleLable: UILabel!
     private var descriptionLabel: UILabel!
+    private var coverImageView: UIImageView!
     private var subscriptions = Set<AnyCancellable>()
     
     private var dependency: ContainerDependency
@@ -45,7 +46,7 @@ extension RPBookItemDetailViewController {
     private func setupUI() {
         self.view.backgroundColor = .white
         self.bookTitleLable = UILabel()
-        self.bookTitleLable.font = UIFont.systemFont(ofSize: 22)
+        self.bookTitleLable.font = UIFont.boldSystemFont(ofSize: 22)
         self.bookTitleLable.translatesAutoresizingMaskIntoConstraints = false
     
         self.view.addSubview(self.bookTitleLable)
@@ -53,7 +54,27 @@ extension RPBookItemDetailViewController {
         self.bookTitleLable.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
         self.bookTitleLable.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
         self.bookTitleLable.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        self.bookTitleLable.backgroundColor = .red
+        self.bookTitleLable.textAlignment = .center
+        
+        
+        self.descriptionLabel = UILabel()
+        self.descriptionLabel.font = UIFont.systemFont(ofSize: 18)
+        self.descriptionLabel.numberOfLines = 0
+        self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.descriptionLabel)
+        self.descriptionLabel.topAnchor.constraint(equalTo: self.bookTitleLable.bottomAnchor, constant: 20).isActive = true
+        self.descriptionLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
+        self.descriptionLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+        self.descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant:  100).isActive = true
+        self.descriptionLabel.textAlignment = .left
+        
+        self.coverImageView = UIImageView()
+        self.coverImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.coverImageView)
+        self.descriptionLabel.topAnchor.constraint(equalTo: self.bookTitleLable.bottomAnchor, constant: 20).isActive = true
+        self.descriptionLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10).isActive = true
+        self.descriptionLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+        self.descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant:  100).isActive = true
     }
     
     private func bindingUIs() {
@@ -62,6 +83,10 @@ extension RPBookItemDetailViewController {
         
         output.bookTitleNamePublisher
             .assign(to: \.text, on: self.bookTitleLable)
+            .store(in: &self.subscriptions)
+        
+        output.bookDescriptionPublisher
+            .assign(to: \.text, on: self.descriptionLabel)
             .store(in: &self.subscriptions)
     }
 }

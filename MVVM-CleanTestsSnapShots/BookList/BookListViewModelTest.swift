@@ -40,8 +40,8 @@ class BookListViewModelTest: XCTestCase {
 
         let exp = expectation(description: "testRefreshTriggerToRetriveDAtaWithCorectEntity fail")
         exp.expectedFulfillmentCount = 1
-        /// output
-        sut.output.bookItemsPublisher
+        /// output bindinf viewcontrller?? bnindg here
+        sut.output.bookItemsPublisher //tablue view > binding
             .dropFirst()
             .sink {[weak sut] itmes in
                 guard let sut = sut else{return}

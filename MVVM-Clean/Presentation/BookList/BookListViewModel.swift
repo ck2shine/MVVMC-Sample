@@ -76,11 +76,12 @@ public class BookListViewModel: BookListViewModelManager, BookListViewModelInput
 
     private func initializeAction() {
         // binding tableview event
+        //input
         self.refreshTableContent
             .setFailureType(to: Error.self)
             .flatMap { [unowned self] _ in
                 self.activityItemPublisher.value = true
-                return self.useCase.fetchBookItems()
+                return self.useCase.fetchBookItems()//>>>reposut
             }.sink { error in
                 print("error \(error)")
             } receiveValue: { [unowned self] bookItems in
