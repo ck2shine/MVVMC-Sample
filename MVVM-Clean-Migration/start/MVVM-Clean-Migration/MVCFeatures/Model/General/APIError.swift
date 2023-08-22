@@ -10,7 +10,7 @@
  */
 
 import Foundation
-class APIError: Swift.Error {
+public class APIError: Swift.Error {
     init(errorCode: String = "", errorMessage: String = "") {
         self.errorCode = errorCode
         self.errorMessage = errorMessage
