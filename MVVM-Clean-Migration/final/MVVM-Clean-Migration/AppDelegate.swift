@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         let container = PaymentFlowContainer()
         container.registerPaymentMethodDependency()
-        let rootVc = UINavigationController(rootViewController: PaymentMethodViewController(dependency: container))
+        let rootVc = UINavigationController(rootViewController: RPPaymentMethodViewController(dependency: container))
         
         self.window?.rootViewController = rootVc
         self.window?.makeKeyAndVisible()

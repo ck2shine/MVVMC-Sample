@@ -10,10 +10,10 @@
 		A420A9EB2ABA820E0072760D /* RetainCycleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9EA2ABA820E0072760D /* RetainCycleObject.swift */; };
 		A420A9EE2ABA82BD0072760D /* MemoryLeakUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9ED2ABA82BD0072760D /* MemoryLeakUnitTests.swift */; };
 		A420A9F02ABA8CB50072760D /* RetainCycleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9EF2ABA8CB50072760D /* RetainCycleDependency.swift */; };
+		A420A9F32ABA9DA10072760D /* CustomerDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9F22ABA9DA10072760D /* CustomerDataCell.swift */; };
 		A48495192A8C66710058C58D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48495182A8C66710058C58D /* AppDelegate.swift */; };
 		A48495222A8C66730058C58D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A48495212A8C66730058C58D /* Assets.xcassets */; };
 		A48495252A8C66730058C58D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A48495232A8C66730058C58D /* LaunchScreen.storyboard */; };
-		A48495312A8C69100058C58D /* PaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48495302A8C69100058C58D /* PaymentMethodViewController.swift */; };
 		A48495332A8C6B0C0058C58D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A48495322A8C6B0C0058C58D /* Main.storyboard */; };
 		A4865E4E2A8DD9990057DAE2 /* RakutenWalletApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E4D2A8DD9990057DAE2 /* RakutenWalletApiManager.swift */; };
 		A4865E502A8DE0B20057DAE2 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E4F2A8DE0B20057DAE2 /* APIManager.swift */; };
@@ -24,10 +24,8 @@
 		A4865E702A8E18E50057DAE2 /* Shopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E6F2A8E18E50057DAE2 /* Shopper.swift */; };
 		A4865E732A8F29530057DAE2 /* UIColorEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E722A8F29530057DAE2 /* UIColorEX.swift */; };
 		A4865E762A8F29A80057DAE2 /* RPayStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E752A8F29A80057DAE2 /* RPayStyleButton.swift */; };
-		A4865E7A2A8F36340057DAE2 /* CustomerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E792A8F36340057DAE2 /* CustomerDetailViewController.swift */; };
 		A4865E7C2A91DEB50057DAE2 /* GetPaymentHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E7B2A91DEB50057DAE2 /* GetPaymentHistoryResponse.swift */; };
 		A4865E7E2A91DF780057DAE2 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E7D2A91DF780057DAE2 /* Transaction.swift */; };
-		A4865E832A91E2A70057DAE2 /* CustomerDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E822A91E2A70057DAE2 /* CustomerDataCell.swift */; };
 		A4865E852A91E5CD0057DAE2 /* UIViewControllerEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E842A91E5CD0057DAE2 /* UIViewControllerEX.swift */; };
 		A4865E9A2A9210BF0057DAE2 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865E992A9210BF0057DAE2 /* Container.swift */; };
 		A4865EB02A92117F0057DAE2 /* RPPaymentMethodDefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4865EA92A92117F0057DAE2 /* RPPaymentMethodDefaultRepository.swift */; };
@@ -72,12 +70,12 @@
 		A420A9EA2ABA820E0072760D /* RetainCycleObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetainCycleObject.swift; sourceTree = "<group>"; };
 		A420A9ED2ABA82BD0072760D /* MemoryLeakUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeakUnitTests.swift; sourceTree = "<group>"; };
 		A420A9EF2ABA8CB50072760D /* RetainCycleDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetainCycleDependency.swift; sourceTree = "<group>"; };
+		A420A9F22ABA9DA10072760D /* CustomerDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDataCell.swift; sourceTree = "<group>"; };
 		A48495152A8C66710058C58D /* MVVM-Clean-Migration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-Clean-Migration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A48495182A8C66710058C58D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A48495212A8C66730058C58D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A48495242A8C66730058C58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A48495262A8C66730058C58D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A48495302A8C69100058C58D /* PaymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewController.swift; sourceTree = "<group>"; };
 		A48495322A8C6B0C0058C58D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A4865E4D2A8DD9990057DAE2 /* RakutenWalletApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenWalletApiManager.swift; sourceTree = "<group>"; };
 		A4865E4F2A8DE0B20057DAE2 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -88,10 +86,8 @@
 		A4865E6F2A8E18E50057DAE2 /* Shopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopper.swift; sourceTree = "<group>"; };
 		A4865E722A8F29530057DAE2 /* UIColorEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEX.swift; sourceTree = "<group>"; };
 		A4865E752A8F29A80057DAE2 /* RPayStyleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RPayStyleButton.swift; sourceTree = "<group>"; };
-		A4865E792A8F36340057DAE2 /* CustomerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailViewController.swift; sourceTree = "<group>"; };
 		A4865E7B2A91DEB50057DAE2 /* GetPaymentHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPaymentHistoryResponse.swift; sourceTree = "<group>"; };
 		A4865E7D2A91DF780057DAE2 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		A4865E822A91E2A70057DAE2 /* CustomerDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDataCell.swift; sourceTree = "<group>"; };
 		A4865E842A91E5CD0057DAE2 /* UIViewControllerEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerEX.swift; sourceTree = "<group>"; };
 		A4865E992A9210BF0057DAE2 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		A4865EA92A92117F0057DAE2 /* RPPaymentMethodDefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPPaymentMethodDefaultRepository.swift; sourceTree = "<group>"; };
@@ -158,6 +154,16 @@
 			path = MemoryLeakTest;
 			sourceTree = "<group>";
 		};
+		A420A9F12ABA9CD10072760D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				A420A9F22ABA9DA10072760D /* CustomerDataCell.swift */,
+				A4BEBB9F2A92FEA400739B8C /* RPCustomerDataCellViewModel.swift */,
+				A4BEBBA12A92FEC600739B8C /* CustomerDataCellSetting.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		A484950C2A8C66710058C58D = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +208,6 @@
 		A484952F2A8C68670058C58D /* MVCFeatures */ = {
 			isa = PBXGroup;
 			children = (
-				A4865E772A8F31E60057DAE2 /* ViewControllers */,
 				A4865E742A8F29810057DAE2 /* View */,
 				A4865E712A8F29300057DAE2 /* Extension */,
 				A4865E5D2A8DFC370057DAE2 /* Model */,
@@ -267,16 +272,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A4865E772A8F31E60057DAE2 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A4865E7F2A91E27F0057DAE2 /* cells */,
-				A48495302A8C69100058C58D /* PaymentMethodViewController.swift */,
-				A4865E792A8F36340057DAE2 /* CustomerDetailViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		A4865E782A8F31FE0057DAE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,14 +280,6 @@
 				A48495212A8C66730058C58D /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		A4865E7F2A91E27F0057DAE2 /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				A4865E822A91E2A70057DAE2 /* CustomerDataCell.swift */,
-			);
-			path = cells;
 			sourceTree = "<group>";
 		};
 		A4865E862A920ED70057DAE2 /* MVVM-Clean */ = {
@@ -368,12 +355,11 @@
 		A4BEBB622A92507E00739B8C /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				A420A9F12ABA9CD10072760D /* cells */,
 				A4865EAB2A92117F0057DAE2 /* RPPaymentMethodViewController.swift */,
 				A4865EAE2A92117F0057DAE2 /* RPPaymentMethodViewModel.swift */,
 				A4BEBB932A92551100739B8C /* RPCusomerDetailViewController.swift */,
 				A4BEBB962A92551100739B8C /* RPCusomerDetailViewModel.swift */,
-				A4BEBB9F2A92FEA400739B8C /* RPCustomerDataCellViewModel.swift */,
-				A4BEBBA12A92FEC600739B8C /* CustomerDataCellSetting.swift */,
 				A4BEBBA32A93799E00739B8C /* RPCusomerDetailModel.swift */,
 			);
 			path = Payment;
@@ -547,7 +533,6 @@
 				A4865EB42A92117F0057DAE2 /* RPPaymentMethodDTO+Mapping.swift in Sources */,
 				A48495192A8C66710058C58D /* AppDelegate.swift in Sources */,
 				A4865EB32A92117F0057DAE2 /* RPPaymentMethodRepository.swift in Sources */,
-				A4865E832A91E2A70057DAE2 /* CustomerDataCell.swift in Sources */,
 				A4865E5C2A8DFBF90057DAE2 /* NetworkManager.swift in Sources */,
 				A4BEBBA22A92FEC600739B8C /* CustomerDataCellSetting.swift in Sources */,
 				A4865E732A8F29530057DAE2 /* UIColorEX.swift in Sources */,
@@ -555,12 +540,12 @@
 				A4865E702A8E18E50057DAE2 /* Shopper.swift in Sources */,
 				A4BEBBB72A937FCA00739B8C /* main.swift in Sources */,
 				A4865EB12A92117F0057DAE2 /* RPPaymentMethodUseCase.swift in Sources */,
-				A48495312A8C69100058C58D /* PaymentMethodViewController.swift in Sources */,
 				A420A9F02ABA8CB50072760D /* RetainCycleDependency.swift in Sources */,
 				A4865E6E2A8E17D60057DAE2 /* Constants.swift in Sources */,
 				A4865EBE2A92355F0057DAE2 /* RemoteDataLoader.swift in Sources */,
 				A4865EB62A92117F0057DAE2 /* RPPaymentMethodEntity.swift in Sources */,
 				A4BEBB9D2A92551100739B8C /* RPCusomerDetailViewModel.swift in Sources */,
+				A420A9F32ABA9DA10072760D /* CustomerDataCell.swift in Sources */,
 				A4865EB92A9214450057DAE2 /* PaymentFlowContainer.swift in Sources */,
 				A4865E762A8F29A80057DAE2 /* RPayStyleButton.swift in Sources */,
 				A4BEBB982A92551100739B8C /* RPCusomerDetailDefaultRepository.swift in Sources */,
@@ -572,7 +557,6 @@
 				A4865E6A2A8E04980057DAE2 /* APIError.swift in Sources */,
 				A4BEBB9C2A92551100739B8C /* RPCusomerDetailDTO+Mapping.swift in Sources */,
 				A4865E852A91E5CD0057DAE2 /* UIViewControllerEX.swift in Sources */,
-				A4865E7A2A8F36340057DAE2 /* CustomerDetailViewController.swift in Sources */,
 				A4865E9A2A9210BF0057DAE2 /* Container.swift in Sources */,
 				A420A9EB2ABA820E0072760D /* RetainCycleObject.swift in Sources */,
 				A4865EB22A92117F0057DAE2 /* RPPaymentMethodViewController.swift in Sources */,

@@ -12,24 +12,7 @@
 import Combine
 import Foundation
 
-public protocol RPPaymentMethodViewModelInput {
-    var userAuthTrigger: PassthroughSubject<Void, Never> { get set }
-    var transitTrigger: PassthroughSubject<Void, Never> { get set }
-}
-
-public protocol RPPaymentMethodViewModelOutput {
-    var responseDataPublisher: CurrentValueSubject<(qrImage: String, brImage: String, name: String), Never> { get set }
-    var loadingActivityPublisher: PassthroughSubject<Bool, Never> { get set }
-    var alertPublisher: PassthroughSubject<(title: String, message: String), Never> { get set }
-    var transitPublisher: PassthroughSubject<RPPaymentMethodEntity?, Never> { get set }
-}
-
-public protocol RPPaymentMethodViewModelManager {
-    var input: RPPaymentMethodViewModelInput { get }
-    var output: RPPaymentMethodViewModelOutput { get }
-}
-
-public class RPPaymentMethodViewModel: RPPaymentMethodViewModelInput, RPPaymentMethodViewModelOutput, RPPaymentMethodViewModelManager {
+public class RPPaymentMethodViewModel {
     private var subscription = Set<AnyCancellable>()
     private let useCase: RPPaymentMethodUseCase
 
@@ -38,22 +21,14 @@ public class RPPaymentMethodViewModel: RPPaymentMethodViewModelInput, RPPaymentM
         self.initializeAction()
     }
 
-    public var input: RPPaymentMethodViewModelInput {
-        return self
-    }
-
-    public var output: RPPaymentMethodViewModelOutput {
-        return self
-    }
-
     /// input
-    public var userAuthTrigger: PassthroughSubject<Void, Never> = .init()
-    public var transitTrigger: PassthroughSubject<Void, Never> = .init()
+    @Published public var userAuthTrigger: Void = ()
+    @Published public var transitTrigger: Void = ()
     /// output
-    public var responseDataPublisher: CurrentValueSubject<(qrImage: String, brImage: String, name: String), Never> = .init(("", "", ""))
-    public var loadingActivityPublisher: PassthroughSubject<Bool, Never> = .init()
-    public var alertPublisher: PassthroughSubject<(title: String, message: String), Never> = .init()
-    public var transitPublisher: PassthroughSubject<RPPaymentMethodEntity?, Never> = .init()
+    @Published public var responseDataPublisher: (qrImage: String, brImage: String, name: String) = ("", "", "")
+    @Published public var loadingActivityPublisher: Bool = false
+    @Published public var alertPublisher: (title: String, message: String) = ("","")
+    @Published public var transitPublisher: RPPaymentMethodEntity?
 
     /// store properties
     private var shopper: RPPaymentMethodEntity?
@@ -62,9 +37,9 @@ public class RPPaymentMethodViewModel: RPPaymentMethodViewModelInput, RPPaymentM
 extension RPPaymentMethodViewModel {
     private func initializeAction() {
         // binding input and output
-        self.userAuthTrigger
+        self.$userAuthTrigger
             .flatMap { [unowned self] _ in
-                self.loadingActivityPublisher.send(true)
+                self.loadingActivityPublisher = true
                 return Just(())
             }
             .receive(on: DispatchQueue.global())
@@ -83,9 +58,9 @@ extension RPPaymentMethodViewModel {
             }
             .store(in: &self.subscription)
 
-        self.transitTrigger
+        self.$transitTrigger
             .sink { [unowned self] _ in
-                self.transitPublisher.send(self.shopper)
+                self.transitPublisher = self.shopper
             }
             .store(in: &self.subscription)
     }
@@ -97,12 +72,12 @@ extension RPPaymentMethodViewModel {
     private func handleAuthResponse(_ shopper: RPPaymentMethodEntity) {
         self.shopper = shopper
         // stop animate
-        self.loadingActivityPublisher.send(false)
-        self.responseDataPublisher.value = (shopper.qrcodeName, shopper.barcodeName, shopper.lastName ?? "")
+        self.loadingActivityPublisher = false 
+        self.responseDataPublisher = (shopper.qrcodeName, shopper.barcodeName, shopper.lastName ?? "")
     }
 
     private func handleAuthFail(apiError: APIError) {
-        self.loadingActivityPublisher.send(false)
-        self.alertPublisher.send((apiError.errorCode, apiError.errorMessage))
+        self.loadingActivityPublisher = false
+        self.alertPublisher = (apiError.errorCode, apiError.errorMessage)
     }
 }

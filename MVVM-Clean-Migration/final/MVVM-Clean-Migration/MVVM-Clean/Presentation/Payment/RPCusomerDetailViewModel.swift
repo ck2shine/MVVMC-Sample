@@ -12,23 +12,8 @@
 import Combine
 import Foundation
 
-public protocol RPCusomerDetailViewModelInput {
-    var userHistoryTrigger: PassthroughSubject<Void, Never> { get set }
-}
 
-public protocol RPCusomerDetailViewModelOutput {
-    var userNamePublisher: CurrentValueSubject<String, Never> { get set }
-    var loadingActivityPublisher: PassthroughSubject<Bool, Never> { get set }
-    var alertPublisher: PassthroughSubject<(title: String, message: String), Never> { get set }
-    var transactionItemsPublisher: CurrentValueSubject<[CustomerItemViewModelProtocol], Never> { get set }
-}
-
-public protocol RPCusomerDetailViewModelManager {
-    var input: RPCusomerDetailViewModelInput { get }
-    var output: RPCusomerDetailViewModelOutput { get }
-}
-
-public class RPCusomerDetailViewModel: RPCusomerDetailViewModelInput, RPCusomerDetailViewModelOutput, RPCusomerDetailViewModelManager {
+public class RPCusomerDetailViewModel {
     private var subscription = Set<AnyCancellable>()
     private let useCase: RPCusomerDetailUseCase
 
@@ -38,22 +23,13 @@ public class RPCusomerDetailViewModel: RPCusomerDetailViewModelInput, RPCusomerD
         self.initializeAction()
     }
 
-    public var input: RPCusomerDetailViewModelInput {
-        return self
-    }
-
-    public var output: RPCusomerDetailViewModelOutput {
-        return self
-    }
-
     /// input
-    public var userHistoryTrigger: PassthroughSubject<Void, Never> = .init()
+    @Published public var userHistoryTrigger: Void  = ()
     /// output
-    public var userNamePublisher: CurrentValueSubject<String, Never> = .init("")
-    public var loadingActivityPublisher: PassthroughSubject<Bool, Never> = .init()
-    public var alertPublisher: PassthroughSubject<(title: String, message: String), Never> = .init()
-
-    public var transactionItemsPublisher: CurrentValueSubject<[CustomerItemViewModelProtocol], Never> = .init([])
+    @Published public var userNamePublisher: String  = ""
+    @Published public var loadingActivityPublisher: Bool = false
+    @Published public var alertPublisher: (title: String, message: String) = ("","")
+    @Published public var transactionItemsPublisher: CurrentValueSubject<[CustomerItemViewModelProtocol], Never> = .init([])
 
     /// store properties
     private var entity: RPPaymentMethodEntity?
@@ -62,9 +38,9 @@ public class RPCusomerDetailViewModel: RPCusomerDetailViewModelInput, RPCusomerD
 extension RPCusomerDetailViewModel {
     private func initializeAction() {
         // binding input and output
-        self.userHistoryTrigger
+        self.$userHistoryTrigger
             .flatMap { [unowned self] _ in
-                self.loadingActivityPublisher.send(true)
+                self.loadingActivityPublisher = true
                 return Just(())
             }
             .receive(on: DispatchQueue.global())
@@ -85,7 +61,7 @@ extension RPCusomerDetailViewModel {
     }
 
     private func didFinishRecordsRequest(_ entity: RPCusomerDetailEntity) {
-        self.loadingActivityPublisher.send(false)
+        self.loadingActivityPublisher = false
 
         let model = RPCusomerDetailModel()
 
@@ -93,11 +69,11 @@ extension RPCusomerDetailViewModel {
         self.transactionItemsPublisher.value = model.convertDataToCellViewModel(entity: entity)
 
         // assign name label value
-        self.userNamePublisher.value = "\(self.entity?.lastName ?? "") \(self.entity?.firstName ?? "") Payment History"
+        self.userNamePublisher = "\(self.entity?.lastName ?? "") \(self.entity?.firstName ?? "") Payment History"
     }
 
     private func didFinishRecordWithError(error: APIError) {
-        self.loadingActivityPublisher.send(false)
-        self.alertPublisher.send((error.errorCode, error.errorMessage))
+        self.loadingActivityPublisher = false
+        self.alertPublisher = (error.errorCode, error.errorMessage)
     }
 }
