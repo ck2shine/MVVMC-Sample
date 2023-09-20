@@ -68,6 +68,7 @@ extension RPPaymentMethodViewModel {
                 return Just(())
             }
             .receive(on: DispatchQueue.global())
+            .setFailureType(to: APIError.self)
             .flatMap { [unowned self] in
                 self.useCase.retrieveUserInformation(shopperEntity: self.shopper)
             }

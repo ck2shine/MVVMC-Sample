@@ -68,6 +68,7 @@ extension RPCusomerDetailViewModel {
                 return Just(())
             }
             .receive(on: DispatchQueue.global())
+            .setFailureType(to: APIError.self)
             .flatMap { [unowned self] _ in
                 self.useCase.retrieveHistoryData(easyID: self.entity?.easyID)
             }
