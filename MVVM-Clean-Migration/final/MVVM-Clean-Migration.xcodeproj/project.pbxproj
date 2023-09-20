@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A420A9EB2ABA820E0072760D /* RetainCycleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9EA2ABA820E0072760D /* RetainCycleObject.swift */; };
+		A420A9EE2ABA82BD0072760D /* MemoryLeakUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9ED2ABA82BD0072760D /* MemoryLeakUnitTests.swift */; };
+		A420A9F02ABA8CB50072760D /* RetainCycleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9EF2ABA8CB50072760D /* RetainCycleDependency.swift */; };
 		A48495192A8C66710058C58D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48495182A8C66710058C58D /* AppDelegate.swift */; };
 		A48495222A8C66730058C58D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A48495212A8C66730058C58D /* Assets.xcassets */; };
 		A48495252A8C66730058C58D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A48495232A8C66730058C58D /* LaunchScreen.storyboard */; };
@@ -66,6 +69,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A420A9EA2ABA820E0072760D /* RetainCycleObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetainCycleObject.swift; sourceTree = "<group>"; };
+		A420A9ED2ABA82BD0072760D /* MemoryLeakUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeakUnitTests.swift; sourceTree = "<group>"; };
+		A420A9EF2ABA8CB50072760D /* RetainCycleDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetainCycleDependency.swift; sourceTree = "<group>"; };
 		A48495152A8C66710058C58D /* MVVM-Clean-Migration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-Clean-Migration.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A48495182A8C66710058C58D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A48495212A8C66730058C58D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -135,6 +141,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A420A9E92ABA81DA0072760D /* TestingObject */ = {
+			isa = PBXGroup;
+			children = (
+				A420A9EA2ABA820E0072760D /* RetainCycleObject.swift */,
+				A420A9EF2ABA8CB50072760D /* RetainCycleDependency.swift */,
+			);
+			path = TestingObject;
+			sourceTree = "<group>";
+		};
+		A420A9EC2ABA82390072760D /* MemoryLeakTest */ = {
+			isa = PBXGroup;
+			children = (
+				A420A9ED2ABA82BD0072760D /* MemoryLeakUnitTests.swift */,
+			);
+			path = MemoryLeakTest;
+			sourceTree = "<group>";
+		};
 		A484950C2A8C66710058C58D = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +179,7 @@
 		A48495172A8C66710058C58D /* MVVM-Clean-Migration */ = {
 			isa = PBXGroup;
 			children = (
+				A420A9E92ABA81DA0072760D /* TestingObject */,
 				A4865E862A920ED70057DAE2 /* MVVM-Clean */,
 				A484952F2A8C68670058C58D /* MVCFeatures */,
 				A484952C2A8C684A0058C58D /* Application */,
@@ -389,6 +413,7 @@
 		A4BEBBAA2A937EE800739B8C /* MVVM-Clean-MigrationTests */ = {
 			isa = PBXGroup;
 			children = (
+				A420A9EC2ABA82390072760D /* MemoryLeakTest */,
 				A4BEBBBD2A93806E00739B8C /* PaymentViewControllerTest */,
 				A4BEBBBA2A93803000739B8C /* MockAppDelegate */,
 				A4BEBBAB2A937EE800739B8C /* MVVM_Clean_MigrationTests.swift */,
@@ -531,6 +556,7 @@
 				A4BEBBB72A937FCA00739B8C /* main.swift in Sources */,
 				A4865EB12A92117F0057DAE2 /* RPPaymentMethodUseCase.swift in Sources */,
 				A48495312A8C69100058C58D /* PaymentMethodViewController.swift in Sources */,
+				A420A9F02ABA8CB50072760D /* RetainCycleDependency.swift in Sources */,
 				A4865E6E2A8E17D60057DAE2 /* Constants.swift in Sources */,
 				A4865EBE2A92355F0057DAE2 /* RemoteDataLoader.swift in Sources */,
 				A4865EB62A92117F0057DAE2 /* RPPaymentMethodEntity.swift in Sources */,
@@ -548,6 +574,7 @@
 				A4865E852A91E5CD0057DAE2 /* UIViewControllerEX.swift in Sources */,
 				A4865E7A2A8F36340057DAE2 /* CustomerDetailViewController.swift in Sources */,
 				A4865E9A2A9210BF0057DAE2 /* Container.swift in Sources */,
+				A420A9EB2ABA820E0072760D /* RetainCycleObject.swift in Sources */,
 				A4865EB22A92117F0057DAE2 /* RPPaymentMethodViewController.swift in Sources */,
 				A4865E7C2A91DEB50057DAE2 /* GetPaymentHistoryResponse.swift in Sources */,
 				A4865EC22A9236DA0057DAE2 /* NetworkEndpoint.swift in Sources */,
@@ -563,6 +590,7 @@
 				A4BEBBAC2A937EE800739B8C /* MVVM_Clean_MigrationTests.swift in Sources */,
 				A4BEBBBB2A93804C00739B8C /* TestingAppDelegate.swift in Sources */,
 				A4BEBBC12A9380A300739B8C /* PaymentViewControllerSnapShotTest.swift in Sources */,
+				A420A9EE2ABA82BD0072760D /* MemoryLeakUnitTests.swift in Sources */,
 				A4BEBBBC2A93804E00739B8C /* TestingRootViewController.swift in Sources */,
 				A4BEBBBF2A93809200739B8C /* PaymentViewControllerUnitTests.swift in Sources */,
 			);
