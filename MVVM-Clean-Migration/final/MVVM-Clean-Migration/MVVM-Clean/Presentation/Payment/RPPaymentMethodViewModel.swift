@@ -38,6 +38,7 @@ extension RPPaymentMethodViewModel {
     private func initializeAction() {
         // binding input and output
         self.$userAuthTrigger
+            .dropFirst()
             .flatMap { [unowned self] _ in
                 self.loadingActivityPublisher = true
                 return Just(())

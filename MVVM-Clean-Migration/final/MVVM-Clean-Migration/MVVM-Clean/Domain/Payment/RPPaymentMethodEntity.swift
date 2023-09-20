@@ -12,7 +12,7 @@
 import Foundation
 
 public struct RPPaymentMethodEntity {
-    internal init(firstName: String? = nil, lastName: String? = nil, barcodeName: String, qrcodeName: String, easyID: String) {
+    public init(firstName: String? = nil, lastName: String? = nil, barcodeName: String, qrcodeName: String, easyID: String) {
         self.firstName = firstName
         self.lastName = lastName
         self.barcodeName = barcodeName

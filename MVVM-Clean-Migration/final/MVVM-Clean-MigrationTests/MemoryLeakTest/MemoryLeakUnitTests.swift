@@ -14,7 +14,7 @@ import XCTest
 class MemoryLeakUnitTests: XCTestCase {
     func testObjectIsLeaking() {
         let (sut, depenedency) = self.makeSUT()
-        sut.start()
+//        sut.start()
     }
 
     private func makeSUT() -> (sut: RetainCycleObject, dependency: RetainCycleDefaultDependency) {

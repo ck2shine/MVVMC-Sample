@@ -11,7 +11,7 @@
 
 import Foundation
 public class APIError: Swift.Error {
-    init(errorCode: String = "", errorMessage: String = "") {
+    public init(errorCode: String = "", errorMessage: String = "") {
         self.errorCode = errorCode
         self.errorMessage = errorMessage
     }

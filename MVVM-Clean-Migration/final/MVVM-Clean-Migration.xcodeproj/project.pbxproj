@@ -53,7 +53,7 @@
 		A4BEBBB72A937FCA00739B8C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEBBB62A937FCA00739B8C /* main.swift */; };
 		A4BEBBBB2A93804C00739B8C /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEBBB42A937FC500739B8C /* TestingAppDelegate.swift */; };
 		A4BEBBBC2A93804E00739B8C /* TestingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEBBB82A937FCF00739B8C /* TestingRootViewController.swift */; };
-		A4BEBBBF2A93809200739B8C /* PaymentViewControllerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEBBBE2A93809200739B8C /* PaymentViewControllerUnitTests.swift */; };
+		A4BEBBBF2A93809200739B8C /* PaymentViewModelUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEBBBE2A93809200739B8C /* PaymentViewModelUnitTests.swift */; };
 		A4BEBBC12A9380A300739B8C /* PaymentViewControllerSnapShotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BEBBC02A9380A300739B8C /* PaymentViewControllerSnapShotTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,7 +116,7 @@
 		A4BEBBB42A937FC500739B8C /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		A4BEBBB62A937FCA00739B8C /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A4BEBBB82A937FCF00739B8C /* TestingRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingRootViewController.swift; sourceTree = "<group>"; };
-		A4BEBBBE2A93809200739B8C /* PaymentViewControllerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerUnitTests.swift; sourceTree = "<group>"; };
+		A4BEBBBE2A93809200739B8C /* PaymentViewModelUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModelUnitTests.swift; sourceTree = "<group>"; };
 		A4BEBBC02A9380A300739B8C /* PaymentViewControllerSnapShotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewControllerSnapShotTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +171,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A420AA082ABB17F00072760D /* SnapshotTes */ = {
+			isa = PBXGroup;
+			children = (
+				A4BEBBAB2A937EE800739B8C /* MVVM_Clean_MigrationTests.swift */,
+			);
+			path = SnapshotTes;
 			sourceTree = "<group>";
 		};
 		A484950C2A8C66710058C58D = {
@@ -409,10 +417,10 @@
 		A4BEBBAA2A937EE800739B8C /* MVVM-Clean-MigrationTests */ = {
 			isa = PBXGroup;
 			children = (
+				A420AA082ABB17F00072760D /* SnapshotTes */,
 				A420A9EC2ABA82390072760D /* MemoryLeakTest */,
 				A4BEBBBD2A93806E00739B8C /* PaymentViewControllerTest */,
 				A4BEBBBA2A93803000739B8C /* MockAppDelegate */,
-				A4BEBBAB2A937EE800739B8C /* MVVM_Clean_MigrationTests.swift */,
 			);
 			path = "MVVM-Clean-MigrationTests";
 			sourceTree = "<group>";
@@ -429,7 +437,7 @@
 		A4BEBBBD2A93806E00739B8C /* PaymentViewControllerTest */ = {
 			isa = PBXGroup;
 			children = (
-				A4BEBBBE2A93809200739B8C /* PaymentViewControllerUnitTests.swift */,
+				A4BEBBBE2A93809200739B8C /* PaymentViewModelUnitTests.swift */,
 				A4BEBBC02A9380A300739B8C /* PaymentViewControllerSnapShotTest.swift */,
 			);
 			path = PaymentViewControllerTest;
@@ -594,7 +602,7 @@
 				A4BEBBC12A9380A300739B8C /* PaymentViewControllerSnapShotTest.swift in Sources */,
 				A420A9EE2ABA82BD0072760D /* MemoryLeakUnitTests.swift in Sources */,
 				A4BEBBBC2A93804E00739B8C /* TestingRootViewController.swift in Sources */,
-				A4BEBBBF2A93809200739B8C /* PaymentViewControllerUnitTests.swift in Sources */,
+				A4BEBBBF2A93809200739B8C /* PaymentViewModelUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
