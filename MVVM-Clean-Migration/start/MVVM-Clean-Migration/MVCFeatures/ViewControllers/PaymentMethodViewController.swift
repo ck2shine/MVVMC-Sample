@@ -127,9 +127,8 @@ class PaymentMethodViewController: UIViewController {
         
         // load stack memory first
         if let shopper = self.shopper {
+            // use cache
             self.handleAuthResponse(shopper)
-            // refresh again
-            self.performAPI()
         } else {
             // force refresh
             self.performAPI()
