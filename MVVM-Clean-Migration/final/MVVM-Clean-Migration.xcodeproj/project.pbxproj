@@ -11,6 +11,7 @@
 		A420A9EE2ABA82BD0072760D /* MemoryLeakUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9ED2ABA82BD0072760D /* MemoryLeakUnitTests.swift */; };
 		A420A9F02ABA8CB50072760D /* RetainCycleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9EF2ABA8CB50072760D /* RetainCycleDependency.swift */; };
 		A420A9F32ABA9DA10072760D /* CustomerDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420A9F22ABA9DA10072760D /* CustomerDataCell.swift */; };
+		A420AA072ABACD2D0072760D /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = A420AA062ABACD2D0072760D /* SnapshotTesting */; };
 		A48495192A8C66710058C58D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48495182A8C66710058C58D /* AppDelegate.swift */; };
 		A48495222A8C66730058C58D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A48495212A8C66730058C58D /* Assets.xcassets */; };
 		A48495252A8C66730058C58D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A48495232A8C66730058C58D /* LaunchScreen.storyboard */; };
@@ -131,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A420AA072ABACD2D0072760D /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,12 +166,20 @@
 			path = cells;
 			sourceTree = "<group>";
 		};
+		A420AA052ABACD2D0072760D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A484950C2A8C66710058C58D = {
 			isa = PBXGroup;
 			children = (
 				A48495172A8C66710058C58D /* MVVM-Clean-Migration */,
 				A4BEBBAA2A937EE800739B8C /* MVVM-Clean-MigrationTests */,
 				A48495162A8C66710058C58D /* Products */,
+				A420AA052ABACD2D0072760D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -441,6 +451,8 @@
 			dependencies = (
 			);
 			name = "MVVM-Clean-Migration";
+			packageProductDependencies = (
+			);
 			productName = "MVVM-Clean-Migration";
 			productReference = A48495152A8C66710058C58D /* MVVM-Clean-Migration.app */;
 			productType = "com.apple.product-type.application";
@@ -459,6 +471,9 @@
 				A4BEBBAE2A937EE800739B8C /* PBXTargetDependency */,
 			);
 			name = "MVVM-Clean-MigrationTests";
+			packageProductDependencies = (
+				A420AA062ABACD2D0072760D /* SnapshotTesting */,
+			);
 			productName = "MVVM-Clean-MigrationTests";
 			productReference = A4BEBBA92A937EE800739B8C /* MVVM-Clean-MigrationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -491,6 +506,9 @@
 				Base,
 			);
 			mainGroup = A484950C2A8C66710058C58D;
+			packageReferences = (
+				A420AA022ABACD190072760D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = A48495162A8C66710058C58D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -851,6 +869,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A420AA022ABACD190072760D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A420AA062ABACD2D0072760D /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A420AA022ABACD190072760D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A484950D2A8C66710058C58D /* Project object */;
 }

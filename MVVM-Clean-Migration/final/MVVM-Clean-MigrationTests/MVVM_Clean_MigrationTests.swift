@@ -6,18 +6,28 @@
 //
 
 import XCTest
-
+import MVVM_Clean_Migration
+import SnapshotTesting
 final class MVVM_Clean_MigrationTests: XCTestCase {
+   
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override class func setUp() {
+        let env = ProcessInfo().environment
+        
+        super.setUp()
+//        isRecording = true
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testPaymentViewController()  {
+        let container = PaymentFlowContainer()
+        container.registerPaymentMethodDependency()
+        
+        let vc = RPPaymentMethodViewController(dependency: container)
+        assertSnapshot(of: vc, as: .image)
+     
     }
-
-    func testExample() throws {
+    
+    private func testViewOndifferentDevices(){
         
     }
 

@@ -13,6 +13,8 @@ import Foundation
 
 public final class PaymentFlowContainer: Container {
     
+    public override init(){}
+    
     ///first flow
     public func registerPaymentMethodDependency() {
         self.register(forKey: RPPaymentMethodViewModel.self) {
